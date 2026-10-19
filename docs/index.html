@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 應用於教學與行政｜西湖國小</title>
+<meta name="description" content="臺北市西湖國小教師 AI 研習（2026-10-21）簡報與補充資料：LINE 發想、Canvas、教學 Gem、Workspace 串接、行政減量、Gemini 工具箱、ChatGPT 桌面版。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=LXGW+WenKai+TC:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E3A6E; --ink:#22314d; --blue:#3B82C4; --sky:#5AA9E6; --pale:#DCEEFB; --paper:#FBFDFF;
+  --orange:#F0A23B; --soft:#F3F7FB; --line:#C9D9EA; --muted:#5d6b80;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#E9EFF6;color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#deck{width:1920px;height:1080px;position:relative;transform-origin:center center;flex:none}
+.slide{position:absolute;inset:0;background:var(--paper);display:none;overflow:hidden;
+  background-image:radial-gradient(circle at 1px 1px,#e3ecf6 1px,transparent 0);background-size:28px 28px}
+.slide.on{display:block}
+.slide:not(.t-cover):not(.t-closing):not(.t-divider)::after{content:"";position:absolute;right:60px;top:36px;width:360px;height:160px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='160'><path d='M10 140 C 90 150 120 60 200 90 S 280 40 300 40' fill='none' stroke='%235AA9E6' stroke-width='3' stroke-dasharray='8 9'/><path d='M300 40 l52 -24 -18 50 -12 -16 z' fill='white' stroke='%231E3A6E' stroke-width='3' stroke-linejoin='round'/></svg>") no-repeat;opacity:.7;pointer-events:none}
+.slide::before{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:linear-gradient(90deg,var(--sky),var(--pale) 60%,var(--orange))}
+.inner{position:absolute;inset:70px 120px 70px 120px;display:flex;flex-direction:column}
+.pno{position:absolute;right:40px;bottom:30px;font:600 30px Caveat,cursive;color:var(--blue)}
+.kicker{font:700 30px "LXGW WenKai TC",serif;color:var(--blue);letter-spacing:.06em;margin-bottom:6px}
+.kicker::before{content:"✎ ";color:var(--orange)}
+.kicker.big{font-size:44px}
+.title{margin:0 0 40px;font-weight:900;font-size:76px;color:var(--navy);line-height:1.15}
+.title span{background:linear-gradient(transparent 62%,var(--pale) 62%);padding:0 10px;
+  border-bottom:6px solid var(--orange);border-radius:0 0 40px 6px/0 0 10px 4px}
+.foot{font-size:38px;font-weight:700;color:var(--navy);margin:28px 0 0;padding:14px 24px;background:#FFF6E6;border-left:10px solid var(--orange);border-radius:6px}
+.src{position:absolute;left:0;bottom:-34px;margin:0;font-size:22px;color:var(--muted)}
+.link{font-size:32px;color:var(--blue);margin-top:20px;font-weight:700}
+mark{background:linear-gradient(transparent 55%,var(--pale) 55%);color:inherit}
+/* 封面 */
+.cover{position:absolute;inset:-70px -120px;display:flex;align-items:center;justify-content:center}
+.cover .ill{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover-text{position:relative;text-align:center;background:rgba(251,253,255,.82);padding:40px 70px;border-radius:40px;box-shadow:0 0 60px 30px rgba(251,253,255,.85)}
+.cover .org{font:700 34px "LXGW WenKai TC",serif;color:var(--blue)}
+.cover h1{font-weight:900;font-size:112px;line-height:1.15;color:var(--navy);margin:18px 0}
+.cover h1 mark{border-bottom:8px solid var(--orange)}
+.cover .meta{font-size:40px;font-weight:700;color:var(--ink)}
+.cover .who{margin-top:26px;display:flex;gap:40px;justify-content:center;font-size:36px}
+.cover .who b{font:700 46px "LXGW WenKai TC",serif;color:#B5462E}
+.cover .hand{font:600 80px Caveat,cursive;color:var(--blue)}
+/* 章節頁 */
+.divider{display:flex;align-items:center;height:100%;gap:60px}
+.dv-text{flex:1}
+.dv-title{font-weight:900;font-size:130px;color:var(--navy);margin:10px 0;line-height:1.1}
+.dv-sub{font:700 60px "LXGW WenKai TC",serif;color:var(--ink);border-bottom:8px solid var(--orange);display:inline-block;padding-bottom:6px}
+.dv-ill{width:760px;height:760px;flex:none}
+.dv-ill .ill{width:100%;height:100%;object-fit:contain}
+/* 條列 */
+.bul{margin:auto 0;padding-left:1.2em;font-size:50px;line-height:1.55}
+.bul li{margin:8px 0}
+.bul li::marker{color:var(--orange)}
+.bul li.hl{font-weight:700;color:var(--navy)}
+ol.bul li::marker{font-weight:900;color:var(--blue)}
+/* 卡片：手繪框 */
+.cards{display:grid;gap:34px;flex:1;align-content:center}
+.c2{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}.c5{grid-template-columns:repeat(5,1fr)}.c5 .card h3{font-size:34px}.c5 .card p{font-size:28px}.c1{grid-template-columns:1fr}
+.card{position:relative;background:#fff;border:3px solid var(--navy);padding:30px 34px;
+  border-radius:255px 18px 225px 18px/18px 225px 18px 255px;box-shadow:8px 10px 0 var(--pale)}
+.card h3{margin:0 0 14px;font-size:44px;font-weight:900;color:var(--navy)}
+.card p{margin:0;font-size:36px;line-height:1.5}
+.card .note{margin-top:18px;font:700 30px "LXGW WenKai TC",serif;color:#B5462E}
+.card .num{width:64px;height:64px;border-radius:50%;background:var(--orange);color:#fff;font:900 38px/64px "Noto Sans TC";text-align:center;margin-bottom:14px}
+.arrows .card:not(:last-child)::after{content:"➜";position:absolute;right:-36px;top:46%;font-size:40px;color:var(--orange)}
+.rd1{background:#F1F8FE}
+.stat .big{font:900 92px "Noto Sans TC";color:var(--blue);line-height:1.1;margin-bottom:10px}
+/* 步驟 */
+.steps{list-style:none;margin:auto 0;padding:0;display:flex;flex-direction:column;gap:34px}
+.steps li{display:flex;align-items:center;gap:30px;font-size:50px;font-weight:700;color:var(--navy);background:#fff;
+  border:3px solid var(--navy);padding:22px 34px;border-radius:18px 255px 18px 225px/225px 18px 255px 18px;box-shadow:8px 10px 0 var(--pale)}
+.steps .num{flex:none;width:80px;height:80px;border-radius:50%;background:var(--sky);color:#fff;font:900 46px/80px "Noto Sans TC";text-align:center}
+.qs li{font-weight:500;font-size:44px;color:var(--ink)}
+.qs .num:empty{display:none}
+.situation{font-size:52px;font-weight:900;color:var(--navy);margin:16px 0 40px;line-height:1.4}
+.situation .tag{display:inline-block;font-size:30px;background:var(--orange);color:#fff;border-radius:12px;padding:4px 18px;margin-right:18px;vertical-align:middle}
+/* 表格 */
+.tbl{margin:auto 0;border-collapse:separate;border-spacing:0;width:100%;font-size:40px;background:#fff;border:3px solid var(--navy);border-radius:20px;overflow:hidden}
+.tbl th{background:var(--navy);color:#fff;padding:22px;font-size:42px}
+.tbl td{padding:26px 22px;border-top:2px dashed var(--line);text-align:center;height:110px}
+.tbl.compact td{height:auto;padding:7px 22px;font-size:32px}.tbl.compact th{padding:12px}
+.tbl td:first-child{white-space:nowrap;font-weight:700;color:var(--navy)}
+.tbl th:nth-child(3),.tbl td:nth-child(3){background:#FFF8EC}
+.tbl th:nth-child(3){background:#B9741C}
+/* 圖片 */
+.shot{flex:1;display:flex;justify-content:center;align-items:center;min-height:0;gap:40px}
+.shot img{height:100%;width:auto;max-width:100%;object-fit:contain;border:3px solid var(--navy);border-radius:14px;box-shadow:12px 14px 0 var(--pale);background:#fff}
+.shot.two img{max-width:48%}
+.shot.three img{max-width:31%}
+.prompt{position:relative;flex:1;min-height:0;margin:0}.prompt.code pre{margin:0;height:100%;max-height:none;overflow:auto;white-space:pre-wrap;background:#fff;border:3px solid var(--navy);border-radius:20px;padding:30px 40px;font:500 33px/1.55 'Noto Sans TC';color:var(--ink);box-shadow:12px 14px 0 var(--pale)}
+.prompt.code.small pre{font-size:23px;line-height:1.42;padding:20px 36px}
+.prompt.code.big pre{font-size:44px;line-height:1.6;padding:40px 150px 40px 50px}
+.steps.compact{gap:18px}.steps.compact li{font-size:38px;padding-top:14px;padding-bottom:14px}.steps.compact .num{width:64px;height:64px;font-size:36px;line-height:64px}
+.prompt.code .copy{font-size:26px;padding:8px 22px;right:20px;top:20px;border-radius:20px}
+.dls{display:flex;flex-wrap:wrap;gap:24px;margin-top:20px}
+.st{display:flex;gap:60px;flex:1;min-height:0;align-items:center}
+.st-img{flex:1.15;display:flex;justify-content:center;min-height:0;height:100%;align-items:center}
+.st-img img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 2px #1E3A6E) drop-shadow(12px 14px 0 #DCEEFB)}
+.st-text{flex:1}
+.st-text p{font-size:42px;line-height:1.6;margin:0 0 28px}
+.st-text p b{color:#B5462E}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.ill{mix-blend-mode:multiply}
+.illus{flex:1;min-height:0;display:flex;justify-content:center}
+.illus .ill{height:100%;max-width:100%;object-fit:contain;border-radius:24px}
+.ill.missing{display:flex;align-items:center;justify-content:center;border:4px dashed var(--line);color:var(--muted);font-size:40px;width:70%;border-radius:30px}
+.quote{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;margin:0;font:700 72px/1.55 "LXGW WenKai TC",serif;color:var(--navy)}
+.quote.q2{flex:none;font-size:64px;margin:20px 0 40px}
+.rel{margin-top:26px;display:flex;align-items:center;gap:22px;font:900 44px 'Noto Sans TC';color:var(--navy)}.rel .tag{flex:none;font:700 28px 'Noto Sans TC';color:#fff;background:var(--sky);border-radius:30px;padding:8px 22px}
+.aiday{display:flex;gap:60px;align-items:center;flex:1}
+.aiday .bul{flex:1;font-size:44px}
+.qr{width:420px;border:3px solid var(--navy);border-radius:14px;background:#fff;padding:10px}
+.srcs{display:grid;grid-template-columns:1fr 1fr;gap:40px;font-size:31px;line-height:1.6}
+.srcs ul{margin:0;padding-left:1em}
+/* 補充按鈕 */
+.supbtn{position:absolute;right:110px;bottom:24px;font:700 28px "Noto Sans TC";color:#fff;background:var(--blue);border:none;border-radius:30px;padding:10px 26px;cursor:pointer;box-shadow:0 4px 0 var(--navy)}
+.supbtn:hover{background:var(--navy)}
+/* 側欄（補充／講稿） */
+#panel{position:fixed;top:0;right:0;bottom:0;width:min(560px,92vw);background:#fff;box-shadow:-8px 0 30px rgba(30,58,110,.18);transform:translateX(102%);transition:transform .25s;z-index:20;display:flex;flex-direction:column}
+#panel.open{transform:none}
+#panel header{display:flex;gap:8px;padding:14px 16px;border-bottom:2px solid var(--pale);align-items:center}
+#panel header button{font:700 16px "Noto Sans TC";border:2px solid var(--navy);background:#fff;color:var(--navy);border-radius:20px;padding:6px 14px;cursor:pointer}
+#panel header button.act{background:var(--navy);color:#fff}
+#panel header .x{margin-left:auto;border:none;font-size:22px}
+#pbody{overflow:auto;padding:18px 20px 40px;font-size:17px;line-height:1.7}
+#pbody .notes{white-space:pre-wrap}
+.sup{border:2px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.sup h4{margin:6px 0 8px;font-size:19px;color:var(--navy)}
+.sup ul,.sup ol{margin:0;padding-left:1.3em}
+.sup-k{display:flex;gap:8px;font-size:13px}
+.kind{background:var(--pale);color:var(--navy);border-radius:8px;padding:1px 8px;font-weight:700}
+.ev{border-radius:8px;padding:1px 8px;background:#eef1f5;color:var(--muted)}
+.ev-AI\ 生成待查證{background:#FFF1DC;color:#9A5B10}
+.rd{margin-top:10px}.rd summary{font-weight:700;color:var(--navy);cursor:pointer}.rd p{margin:8px 0;text-indent:0}
+.lm{margin-top:10px;background:#FFF6E6;border-radius:10px;padding:8px 12px}.lm ul{margin:4px 0 0}
+.tk{margin-top:10px;border-left:4px solid var(--sky);padding:4px 12px}.tk p{margin:4px 0}
+#panel{width:min(640px,94vw)!important}
+.cl{margin-top:10px;background:#F1F8FE;border-radius:10px;padding:8px 12px}
+.sup-src{margin:10px 0 0;font-size:14px;color:var(--muted)}
+.empty{color:var(--muted)}
+.code{position:relative;margin-top:10px}.code pre{white-space:pre-wrap;background:#F3F7FB;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:14px;line-height:1.6;max-height:420px;overflow:auto}
+.copy{position:absolute;right:8px;top:8px;font:700 13px 'Noto Sans TC';background:var(--navy);color:#fff;border:none;border-radius:12px;padding:4px 10px;cursor:pointer}
+.dl.big{font-size:34px;padding:14px 30px;border-radius:30px;align-self:flex-start;margin-top:10px}
+.dl{display:inline-block;background:var(--orange);color:#fff;font-weight:700;border-radius:14px;padding:6px 14px;text-decoration:none}
+.shot.two figure{margin:0;flex:1;display:flex;flex-direction:column;align-items:center;height:100%;min-height:0}.shot.two figure img{max-width:100%;flex:1;min-height:0}.shot.two figcaption{font:900 40px 'Noto Sans TC';margin-top:14px}
+/* 控制列 */
+#bar{position:fixed;left:50%;top:10px;transform:translateX(-50%);display:flex;gap:8px;z-index:10;padding:6px;background:rgba(255,255,255,.9);border:2px solid var(--navy);border-radius:24px;box-shadow:0 4px 14px rgba(30,58,110,.25)}
+#bar button{font:700 16px "Noto Sans TC";border:none;background:var(--navy);color:#fff;border-radius:16px;padding:8px 14px;cursor:pointer}
+#bar button:hover{background:var(--orange)}
+#prog{position:fixed;left:0;top:0;height:4px;background:var(--orange);z-index:10;transition:width .2s}
+/* 總覽 */
+#grid{position:fixed;inset:0;background:rgba(233,239,246,.97);z-index:30;overflow:auto;display:none;padding:24px}
+#grid.open{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;align-content:start}
+#grid button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:10px;text-align:left;cursor:pointer;font:500 14px "Noto Sans TC";color:var(--ink);min-height:70px}
+#grid button b{color:var(--blue);margin-right:6px}
+#grid button.has::after{content:" 📎";}
+
+/* LINE QR 頁 */
+.qrpage{flex:1;display:flex;align-items:center;justify-content:center;gap:90px}
+.qrpage img{height:640px;border:4px solid var(--navy);border-radius:24px;background:#fff;padding:14px;box-shadow:14px 16px 0 var(--pale)}
+.qrpage .bul{flex:none;font-size:52px}
+/* QR 彈窗 */
+#qrModal{position:fixed;inset:0;background:rgba(20,35,65,.72);z-index:40;display:none;align-items:center;justify-content:center}
+#qrModal.open{display:flex}
+#qrModal .box{background:#fff;border-radius:28px;padding:28px 34px 22px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+#qrModal img{width:min(70vh,80vw);height:min(70vh,80vw);display:block}
+#qrModal .cap{font:900 clamp(20px,3vh,34px) 'Noto Sans TC';color:var(--navy);margin-top:12px}
+#qrModal .hint{font-size:14px;color:var(--muted);margin-top:4px}
+/* 計時器面板 */
+#timerPanel{position:fixed;left:50%;top:64px;transform:translateX(-50%);z-index:35;background:#fff;border:2px solid var(--navy);border-radius:20px;box-shadow:0 10px 30px rgba(30,58,110,.25);padding:16px 18px;display:none;font-family:'Noto Sans TC';width:min(440px,94vw)}
+#timerPanel.open{display:block}
+#timerPanel h5{margin:0 0 10px;font-size:18px;color:var(--navy)}
+#timerPanel .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+#timerPanel input{width:70px;font:700 22px 'Noto Sans TC';text-align:center;border:2px solid var(--line);border-radius:10px;padding:4px}
+#timerPanel button{font:700 15px 'Noto Sans TC';border:none;background:var(--navy);color:#fff;border-radius:14px;padding:7px 12px;cursor:pointer}
+#timerPanel button.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+#timerPanel button.go{background:var(--orange)}
+#timerPanel label{font-size:14px;color:var(--ink);display:flex;align-items:center;gap:4px}
+/* 浮動倒數顯示（換頁不影響） */
+#timerBadge{position:fixed;right:18px;top:12px;z-index:36;display:none;align-items:center;gap:10px;background:#fff;border:3px solid var(--navy);border-radius:22px;padding:6px 16px;font:900 34px 'Noto Sans TC';color:var(--navy);box-shadow:0 6px 18px rgba(30,58,110,.25);cursor:pointer;font-variant-numeric:tabular-nums}
+#timerBadge.show{display:flex}
+#timerBadge.paused{opacity:.6}
+#timerBadge.warn{background:#FFF1DC;border-color:var(--orange);color:#B5462E}
+#timerBadge.danger{background:#E5484D;border-color:#B42318;color:#fff;animation:pulse 1s infinite}
+#timerBadge .bar{width:80px;height:8px;background:var(--pale);border-radius:4px;overflow:hidden}
+#timerBadge .bar i{display:block;height:100%;background:var(--sky)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+#edgeGlow{position:fixed;inset:0;pointer-events:none;z-index:34;box-shadow:inset 0 0 0 0 rgba(229,72,77,0);transition:box-shadow .3s}
+#edgeGlow.on{animation:glow 1s infinite}
+@keyframes glow{0%,100%{box-shadow:inset 0 0 30px 6px rgba(229,72,77,.35)}50%{box-shadow:inset 0 0 80px 22px rgba(229,72,77,.7)}}
+#timesUp{position:fixed;inset:0;z-index:45;display:none;align-items:center;justify-content:center;background:rgba(229,72,77,.88);font:900 min(18vw,220px) 'Noto Sans TC';color:#fff;cursor:pointer;animation:flash .6s 5}
+#timesUp.open{display:flex}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:.55}}
+@media print{#qrModal,#timerPanel,#timerBadge,#edgeGlow,#timesUp{display:none!important}#bar,#panel,#prog,.supbtn{display:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="stage"><div id="deck">
+<section class="slide t-cover" id="p1" data-label="1"><div class="inner"><div class="cover"><div class="ill missing">插圖 cover_bg 製作中</div>
+<div class="cover-text">
+<div class="org">西湖國小教師研習｜教學篇・行政篇・桌面版</div>
+<h1>AI 應用於<br><mark>教學與行政</mark></h1>
+<div class="meta">2026.10.21（三）　西湖國小</div>
+<div class="who"><span>臺北市數位學習中心 <b>周凡淇</b></span></div>
+</div></div></div><div class="pno">1</div></section>
+<section class="slide t-cards" id="p2" data-label="2"><div class="inner"><div class="kicker">自我介紹</div><h2 class="title"><span>我是周凡淇</span></h2><div class="cards c2"><div class="card"><h3>現在</h3><p>臺北市數位學習中心<br>系統開發組組長</p><div class=note>酷AI、CooC+、智慧閱讀平臺</div></div><div class="card"><h3>以前</h3><p>西湖國小老師<br>（114 學年度起借調中心）</p><div class=note>大溝溪之歌、校訂生態課程</div></div></div></div><div class="pno">2</div></section>
+<section class="slide t-table" id="p3" data-label="3"><div class="inner"><div class="kicker">上課前先記住</div><h2 class="title"><span>先講好界線：能丟／不能丟</span></h2><table class="tbl"><thead><tr><th>✅ 可以丟</th><th>❌ 不要丟</th></tr></thead><tbody><tr><td>課文、公開教材</td><td>學生姓名／座號／照片</td></tr><tr><td>自己寫的教案</td><td>家長電話、真實聯絡簿與回條</td></tr><tr><td>去識別化的討論紀錄</td><td>正式段考試題</td></tr><tr><td>假資料</td><td>錄到學生聲音的課堂錄音</td></tr></tbody></table><p class="foot">正式段考試題不丟 AI、不存開放的網路空間 → 本場不示範 AI 出段考題</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">3</div></section>
+<section class="slide t-cards" id="p4" data-label="4"><div class="inner"><div class="kicker">今天帶走</div><h2 class="title"><span>五個作品</span></h2><div class="cards c5"><div class="card"><h3>Canvas 小網頁</h3><p>一個教學單元的互動小網頁</p><div class=note>教學</div></div><div class="card"><h3>教學 Gem</h3><p>一個你自己的教學 Gem</p><div class=note>教學</div></div><div class="card"><h3>圖表報告</h3><p>從 LINE 討論變出來的教學圖表報告</p><div class=note>教學</div></div><div class="card"><h3>Gemini × 日曆</h3><p>幫你記事、排提醒</p><div class=note>行政</div></div><div class="card"><h3>ChatGPT 桌面版</h3><p>裝好、按得出快捷鍵</p><div class=note>桌面版</div></div></div><p class="foot">不是看很多工具，是帶走明天就能用的東西</p></div><div class="pno">4</div></section>
+<section class="slide t-qrpage" id="p5" data-label="5"><div class="inner"><div class="kicker">研習社群</div><h2 class="title"><span>加入今天的 LINE 群組</span></h2><div class="qrpage"><img src="assets/shots/line_group_qr.jpg" alt="LINE 群組 QR Code"><ul class="bul"><li>掃 QR 加入研習 LINE 群</li><li>等一下的發想、連結、範本都在這裡</li></ul></div></div><div class="pno">5</div></section>
+<section class="slide t-divider" id="p6" data-label="6"><div class="inner"><div class="divider"><div class="dv-text"><div class="kicker big">01｜教學篇</div>
+<h2 class="dv-title">一起發想</h2><div class="dv-sub">LINE 群跨領域發想 → 圖表報告</div></div>
+<div class="dv-ill"><div class="ill missing">插圖 sec_idea 製作中</div></div></div></div><div class="pno">6</div></section>
+<section class="slide t-bullets" id="p7" data-label="7"><div class="inner"><div class="kicker">看一段 30 秒影片</div><h2 class="title"><span>「轉角遇到礙」</span></h2><ul class="bul"><li class="">▶ 影片由講者現場播放</li><li class="">發想題：這支影片可以怎麼變成一堂<b>「跨領域」</b>的課？</li><li class="">在 LINE 群丟出你的點子：<b>一則一個點子，越短越好</b></li></ul><p class="foot">「礙」＝阻礙、碰撞：走廊轉角奔跑撞到人</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">7</div></section>
+<section class="slide t-steps" id="p8" data-label="8"><div class="inner"><div class="kicker">⚠️ 要用電腦版 LINE 才能匯出</div><h2 class="title"><span>把 LINE 討論匯出成 txt</span></h2><ol class="steps"><li><span class="num">1</span><span>用 LINE 電腦版打開研習群 → 右上角「⋮」</span></li><li><span class="num">2</span><span>選「儲存聊天」</span></li><li><span class="num">3</span><span>存成 .txt</span></li><li><span class="num">4</span><span>丟給 Gemini</span></li></ol><p class="foot">手機版不一定有「儲存聊天」，用電腦版最穩</p></div><div class="pno">8</div></section>
+<section class="slide t-cards" id="p9" data-label="9"><div class="inner"><div class="kicker">同一份 txt</div><h2 class="title"><span>兩種工具</span></h2><div class="cards c2"><div class="card"><h3>Gemini Canvas</h3><p>做出能看、能點的儀表板<br>會「補」老師沒說的內容</p><div class=note>要驚豔、要重新組織 → Canvas</div></div><div class="card"><h3>Gemini Notebook（原 NotebookLM）</h3><p>只根據你給的資料回答<br>每句附出處</p><div class=note>要有根據、查得到來源 → Notebook</div></div></div></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">9</div></section>
+<section class="slide t-prompt" id="p10" data-label="10"><div class="inner"><div class="kicker">Canvas 圖表報告提示詞（可複製）</div><h2 class="title"><span>LINE 討論 → 教學設計儀表板</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>附件是我們老師社群在 LINE 上的課程發想紀錄。請用 Canvas 做成一個教學設計儀表板：分頁列出課程總覽、各領域可切入的點、學生探究歷程、點子統計圖表、原始討論摘要。請標出哪些是紀錄裡原本就有的、哪些是你補充的。</pre></div></div><div class="pno">10</div></section>
+<section class="slide t-bullets" id="p11" data-label="11"><div class="inner"><div class="kicker">現場示範</div><h2 class="title"><span>Canvas 成果：教學設計儀表板</span></h2><ul class="bul"><li class="">▶ 切到 Gemini，打開剛剛做好的 Canvas</li><li class="">看分頁：課程總覽、各領域切入點、點子統計圖表</li><li class="">找找看：哪些是<b>它補的</b>？跟大家的原始點子對一下</li><li class="">右上角「分享」→ 取得連結 → 丟回 LINE 群</li></ul></div><div class="pno">11</div></section>
+<section class="slide t-divider" id="p12" data-label="12"><div class="inner"><div class="divider"><div class="dv-text"><div class="kicker big">02｜教學篇</div>
+<h2 class="dv-title">動手做 Canvas</h2><div class="dv-sub">一個教學單元，做成互動小網頁</div></div>
+<div class="dv-ill"><div class="ill missing">插圖 sec_canvas 製作中</div></div></div></div><div class="pno">12</div></section>
+<section class="slide t-bullets" id="p13" data-label="13"><div class="inner"><div class="kicker">現場示範</div><h2 class="title"><span>示範課文</span></h2><ul class="bul"><li class="">請準備一篇<b>你這週要教的課文</b>（貼全文或拍照）</li><li class="">沒帶課文？用課本 PDF 或教學指引的範文也可以</li><li class="">國語以外也行：數學解題、自然觀察、社會時間軸</li></ul></div><div class="pno">13</div></section>
+<section class="slide t-bullets" id="p14" data-label="14"><div class="inner"><div class="kicker">現場示範</div><h2 class="title"><span>Canvas 成果：四層次提問卡</span></h2><ul class="bul"><li class="">▶ 切到 Gemini，打開做好的提問卡網頁</li><li class="">點一張卡 → 翻面看參考答案與提示</li><li class="">最下方「我的想法」輸入區</li><li class="">改得不滿意？直接跟它說「字再大一點」「第 3 題太難」</li></ul></div><div class="pno">14</div></section>
+<section class="slide t-steps" id="p15" data-label="15"><div class="inner"><div class="kicker">範例</div><h2 class="title"><span>閱讀的四個層次 → 四層次提問卡</span></h2><ol class="steps"><li><span class="num">1</span><span>提取訊息</span></li><li><span class="num">2</span><span>推論訊息</span></li><li><span class="num">3</span><span>詮釋整合</span></li><li><span class="num">4</span><span>比較評估</span></li></ol><p class="foot">讓 Canvas 做成可翻面的提問卡，學生點開一層、答一題；換成你的科目也可以──數學解題步驟卡、自然觀察紀錄、社會時間軸</p></div><div class="pno">15</div></section>
+<section class="slide t-prompt" id="p16" data-label="16"><div class="inner"><div class="kicker">Canvas 提示詞（可複製）</div><h2 class="title"><span>動手做｜15 分鐘</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>以下是一篇國小 ___ 年級的課文（貼上全文）。請用 Canvas 做一個互動網頁：依閱讀理解四層次（提取、推論、詮釋整合、比較評估）各出 2 題提問卡，點擊翻面顯示參考答案與提示；最後加一個『我的想法』輸入區。版面適合投影，字要大。</pre></div><p class="foot">做完按「分享」取得連結，丟回 LINE 群</p></div><div class="pno">16</div></section>
+<section class="slide t-cards" id="p17" data-label="17"><div class="inner"><div class="kicker">現場點播</div><h2 class="title"><span>你說需求，我當場做</span></h2><div class="cards c3"><div class="card"><h3>抽籤／分組器</h3><p>貼上座號，一鍵分組</p></div><div class="card"><h3>下課前 5 分鐘複習遊戲</h3><p>單元重點變成搶答</p></div><div class="card"><h3>課堂計時器</h3><p>到了會響、字很大</p></div></div><p class="foot">小提醒：Canvas 作品存的資料換瀏覽器就讀不到，當「課堂投影工具」最穩</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">17</div></section>
+<section class="slide t-divider" id="p18" data-label="18"><div class="inner"><div class="divider"><div class="dv-text"><div class="kicker big">03｜教學篇</div>
+<h2 class="dv-title">打造你的教學 Gem</h2><div class="dv-sub">把你的教學判斷寫給 AI</div></div>
+<div class="dv-ill"><div class="ill missing">插圖 sec_gem 製作中</div></div></div></div><div class="pno">18</div></section>
+<section class="slide t-bullets" id="p19" data-label="19"><div class="inner"><div class="kicker">Gem 快速複習</div><h2 class="title"><span>Gem＝一個「帶著你寫好的說明書」的 Gemini</span></h2><ul class="bul"><li class="">說明書寫一次，以後每次開都照這套規則</li><li class="">範例：設計思考 Gem──它為什麼會這樣回？</li><li class="">左側欄「探索 Gem」→「新增 Gem」</li></ul></div><div class="pno">19</div></section>
+<section class="slide t-prompt" id="p20" data-label="20"><div class="inner"><div class="kicker">教學 Gem 骨架（填空卡，可複製）</div><h2 class="title"><span>五格寫完，就是一個 Gem</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>1. 角色：你是國小 ___ 年級 ___ 科的學習夥伴
+2. 每次回應三段：接住學生的話 → 教一小塊 → 問一個問題
+3. 答不出來就降一層鷹架：換簡單問法、給選項、給線索
+4. 知識庫放什麼：課文、學習單、評分規準
+5. 明令不要做的事：不直接給答案、不一次問三題、不離題</pre></div></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">20</div></section>
+<section class="slide t-steps" id="p21" data-label="21"><div class="inner"><div class="kicker">2025 年才有的新功能</div><h2 class="title"><span>Gem 直接產出學習單文件</span></h2><ol class="steps"><li><span class="num">1</span><span>建 Gem 時在設定中啟用 Canvas</span></li><li><span class="num">2</span><span>請 Gem「依今天的課文產一份學習單」</span></li><li><span class="num">3</span><span>Canvas 文件 →「在 Google 文件中開啟」→ 可編輯、可列印</span></li></ol></div><div class="pno">21</div></section>
+<section class="slide t-bullets" id="p22" data-label="22"><div class="inner"><div class="kicker">現場示範</div><h2 class="title"><span>匯出成 Google 文件</span></h2><ul class="bul"><li class="">▶ 切到 Gem 產出的學習單 Canvas</li><li class="">右上角「匯出」→「在 Google 文件中開啟」</li><li class="">到雲端硬碟找得到，可以改格式、印出來</li></ul></div><div class="pno">22</div></section>
+<section class="slide t-steps" id="p23" data-label="23"><div class="inner"><div class="kicker">Google 公告：Gem 將自動轉成 skill（技能）</div><h2 class="title"><span>Gem 要改成 skill 了：要注意的</span></h2><ol class="steps compact"><li><span class="num">1</span><span>時程看帳號：個人 Gmail 2026/11/17 起轉；學校教育版帳號用到 2027 年 6 月</span></li><li><span class="num">2</span><span>自動轉換：指令和知識檔案會一起搬過去，不用重做</span></li><li><span class="num">3</span><span>暫時不支援：Canvas、Deep Research、引導式學習等預設工具</span></li><li><span class="num">4</span><span>分享連結、雲端硬碟檔案：Google 說「幾週內」補上</span></li><li><span class="num">5</span><span>用法變了：對話框打「/」叫出 skill，可以一次疊好幾個</span></li></ol><p class="foot">今天做的 Gem 照用；指令另存一份 Google 文件備份</p><p class="src">資料來源｜Google Gemini 說明中心：support.google.com/gemini?p=gems_to_skills</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">23</div></section>
+<section class="slide t-divider" id="p24" data-label="24"><div class="inner"><div class="divider"><div class="dv-text"><div class="kicker big">04｜行政篇</div>
+<h2 class="dv-title">Google Workspace 串接</h2><div class="dv-sub">讓 Gemini 串你的 Google 帳號</div></div>
+<div class="dv-ill"><div class="ill missing">插圖 sec_workspace 製作中</div></div></div></div><div class="pno">24</div></section>
+<section class="slide t-steps" id="p25" data-label="25"><div class="inner"><div class="kicker">串接步驟</div><h2 class="title"><span>四步打開 Workspace 串接</span></h2><ol class="steps compact"><li><span class="num">1</span><span>開啟 Gmail 智慧功能：Gmail 設定 → 確認已開啟「其他 Google 產品的智慧功能」</span></li><li><span class="num">2</span><span>保留活動記錄：開啟 Gemini 的對話記錄，才能存取 Workspace 內容</span></li><li><span class="num">3</span><span>啟用應用程式連結：Gemini 左下角「設定」→「個人化智慧服務」→「連結的應用程式」→ 勾選 Google Workspace</span></li><li><span class="num">4</span><span>用 @ 下指令：對話框輸入 @，選 Gmail、雲端硬碟、文件、日曆</span></li></ol><p class="foot">學校帳號可能被管理員關閉，打不開時先改用個人 Gmail</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">25</div></section>
+<section class="slide t-prompt" id="p26" data-label="26"><div class="inner"><div class="kicker">示範：學校行事曆 → 我的 Google 日曆</div><h2 class="title"><span>一句話建好一整學期的提醒</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>（附上學校行事曆 PDF）
+幫我把 10–11 月跟我有關的活動建到 Google 日曆，並在期中評量前兩週加一個『命題繳交』提醒。</pre></div><p class="foot">用 @Google 日曆 確認建立結果</p></div><div class="pno">26</div></section>
+<section class="slide t-divider" id="p27" data-label="27"><div class="inner"><div class="divider"><div class="dv-text"><div class="kicker big">05｜行政篇</div>
+<h2 class="dv-title">行政減量小幫手</h2><div class="dv-sub">省下時間，留給教學（任選一個試）</div></div>
+<div class="dv-ill"><img class="ill" src="assets/illus/sec_admin.jpg" alt=""></div></div></div><div class="pno">27</div></section>
+<section class="slide t-bullets" id="p28" data-label="28"><div class="inner"><div class="kicker">行政減量①</div><h2 class="title"><span>口述備課 → 教案草稿</span></h2><ul class="bul"><li class="">對著手機口述 3～5 分鐘你想怎麼上 → 上傳 → 整理成教案格式</li><li class="">⚠️ Gemini 免費版音檔上限 10 分鐘；整節課錄音改丟 Gemini Notebook</li><li class="">⚠️ 不錄真實課堂（學生聲音、姓名＝個資）</li></ul></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">28</div></section>
+<section class="slide t-bullets" id="p29" data-label="29"><div class="inner"><div class="kicker">行政減量②</div><h2 class="title"><span>手寫單據 → 電子表格</span></h2><ul class="bul"><li class="">拍照上傳手寫回條／學習單 → 轉成表格</li><li class="">示範用「假回條」</li><li class="hl"><b>數字一定要人工核對</b></li></ul></div><div class="pno">29</div></section>
+<section class="slide t-cards" id="p30" data-label="30"><div class="inner"><div class="kicker">收束</div><h2 class="title"><span>什麼時候用哪一個？</span></h2><div class="cards c3"><div class="card"><h3>要能玩、要能看</h3><p>→ Canvas</p></div><div class="card"><h3>要有根據、附出處</h3><p>→ Gemini Notebook</p></div><div class="card"><h3>要固定你的判斷規則</h3><p>→ Gem</p></div></div><p class="foot">界線永遠第一──不能丟的，換成假資料再丟</p></div><div class="pno">30</div></section>
+<section class="slide t-divider" id="p31" data-label="31"><div class="inner"><div class="divider"><div class="dv-text"><div class="kicker big">06｜教學＋行政</div>
+<h2 class="dv-title">Gemini 工具箱</h2><div class="dv-sub">輸入框「＋」裡，還藏著五個好用工具</div></div>
+<div class="dv-ill"><img class="ill" src="assets/illus/sec_toolbox.jpg" alt=""></div></div></div><div class="pno">31</div></section>
+<section class="slide t-illus" id="p32" data-label="32"><div class="inner"><div class="kicker">工具在哪裡？</div><h2 class="title"><span>在 Gemini 輸入框按「＋」→ 選工具</span></h2><div class="illus"><img class="ill" src="assets/illus/toolbox_five.jpg" alt=""></div><p class="foot">Canvas 剛剛做過了 ✔　今天再認識五個：引導式學習、建立圖像、創作音樂、Deep Research、Notebooks</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">32</div></section>
+<section class="slide t-steps" id="p33" data-label="33"><div class="inner"><div class="kicker">工具①</div><h2 class="title"><span>引導式學習：AI 不直接給答案</span></h2><ol class="steps"><li><span class="num">1</span><span>一步一步拆解，搭配提問、提示、圖解、影片</span></li><li><span class="num">2</span><span>目標是「弄懂」，不是拿到答案</span></li><li><span class="num">3</span><span>操作：「＋」→ 引導式學習 → 輸入問題或上傳學習單照片 → 送出</span></li></ol></div><div class="pno">33</div></section>
+<section class="slide t-prompt" id="p34" data-label="34"><div class="inner"><div class="kicker">引導式學習提示詞（西湖版：讀懂一篇課文）</div><h2 class="title"><span>老師先扮學生試一次</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>（上傳一篇課文的照片）
+請用引導式學習帶我讀懂這篇文章。一次只問我一個問題，依序帶我找出：主題、關鍵詞、作者用了哪些證據，最後讓我提出一個新問題。我答錯時給提示，不要直接給答案。</pre></div><p class="foot">老師先自己扮學生試一次，看 AI 怎麼引導，再回頭改自己的提問設計</p></div><div class="pno">34</div></section>
+<section class="slide t-bullets" id="p35" data-label="35"><div class="inner"><div class="kicker">工具②</div><h2 class="title"><span>建立圖像：用文字畫圖、改照片</span></h2><ul class="bul"><li class="">用文字描述 → 生成圖片（Nano Banana）</li><li class="">上傳照片 → 請它修改；多張照片 → 合成新圖</li><li class="">每張都有 SynthID 隱形浮水印，上傳到 Gemini 可查「是不是 AI 做的」</li><li class="">操作：「＋」→ 建立圖像 → 描述畫面 → 送出</li></ul></div><div class="pno">35</div></section>
+<section class="slide t-bullets" id="p36" data-label="36"><div class="inner"><div class="kicker">工具③</div><h2 class="title"><span>創作音樂：三分鐘做一首歌</span></h2><ul class="bul"><li class="">選人聲或純音樂 → 選曲風、長度 → 描述你要的歌（可附照片）</li><li class="">長度：短版約 1 分鐘／完整版約 2～3 分鐘</li><li class="">可下載 MP3 或 MP4（自動附封面）</li><li class="">操作：「＋」→ 創作音樂</li></ul></div><div class="pno">36</div></section>
+<section class="slide t-bullets" id="p37" data-label="37"><div class="inner"><div class="kicker">現場示範</div><h2 class="title"><span>音樂作品：聽聽看</span></h2><ul class="bul"><li class="">▶ 播放事先做好的歌</li><li class="">分享連結丟 LINE 群，學生用手機就能聽</li><li class="">歌詞要先看過：它會自己加詞</li></ul></div><div class="pno">37</div></section>
+<section class="slide t-cards" id="p38" data-label="38"><div class="inner"><div class="kicker">工具④</div><h2 class="title"><span>Gemini Notebook（原 NotebookLM）：只根據你的資料回答</span></h2><div class="cards c3"><div class="card"><h3>① 放資料</h3><p>PDF、Word、PowerPoint、網站、YouTube、音檔、Google 文件／簡報</p></div><div class="card"><h3>② 問問題</h3><p>回答附引用出處，點一下就看到原文</p></div><div class="card"><h3>③ 一鍵產出</h3><p>語音摘要（可繁中）、影片摘要、心智圖、閃卡／測驗、簡報、資訊圖表</p></div></div><p class="foot">西湖版試試看：放入一課國語課文 → 做心智圖＋10 題測驗，給學生課後複習</p><a class="link" href="https://notebooklm.google" target="_blank" rel="noopener">https://notebooklm.google</a></div><div class="pno">38</div></section>
+<section class="slide t-steps" id="p39" data-label="39"><div class="inner"><div class="kicker">工具⑤</div><h2 class="title"><span>Deep Research：幫你查資料寫報告</span></h2><ol class="steps"><li><span class="num">1</span><span>「＋」→ Deep Research → 輸入研究問題</span></li><li><span class="num">2</span><span>先看它擬的「研究計畫」，可以修改 → 開始研究</span></li><li><span class="num">3</span><span>約 5～10 分鐘，完成會通知</span></li><li><span class="num">4</span><span>報告可「匯出至文件」存成 Google 文件</span></li></ol></div><div class="pno">39</div></section>
+<section class="slide t-prompt" id="p40" data-label="40"><div class="inner"><div class="kicker">Deep Research 提示詞（西湖版）</div><h2 class="title"><span>教學一題、行政一題</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>教學｜請研究國小中高年級『跨領域專題學習（PBL）』有哪些有研究支持的做法。整理台灣與國外各 3 個課堂策略，寫出適用年級、實施步驟與出處，最後做一張比較表。
+
+行政｜整理近三年台灣國小推動『AI 融入教學』的做法與成效，附出處，給學校課程計畫參考。</pre></div><p class="foot">⚠️ 出處一定要點開核對</p></div><div class="pno">40</div></section>
+<section class="slide t-bullets" id="p41" data-label="41"><div class="inner"><div class="kicker">工具⑥</div><h2 class="title"><span>Notebooks：同一批資料，一直問</span></h2><ul class="bul"><li class="">把常用資料放進同一本筆記本：PDF、文件、圖片、錄音、雲端檔、網址</li><li class="">以後在這本筆記本裡問，Gemini 都會參考這些資料</li><li class="">和 Gemini Notebook（原 NotebookLM）自動同步</li><li class="">操作：左側欄「Notebooks」→ 新增筆記本 → 新增來源</li></ul></div><div class="pno">41</div></section>
+<section class="slide t-prompt" id="p42" data-label="42"><div class="inner"><div class="kicker">Notebooks 實作（西湖版：課程計畫筆記本）</div><h2 class="title"><span>一本筆記本，回答整學期的問題</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>1. 建一本「西湖課程計畫」筆記本，放入：學校課程計畫、本學期行事曆、國語課本目錄
+2. 自訂指示：「只根據筆記本裡的資料回答，並標出出處。」
+3. 試問：「10～11 月有哪些活動跟我的班有關？每一項老師要準備什麼？」</pre></div></div><div class="pno">42</div></section>
+<section class="slide t-cards" id="p43" data-label="43"><div class="inner"><div class="kicker">工具箱收束</div><h2 class="title"><span>五個工具怎麼選？</span></h2><div class="cards c5"><div class="card"><h3>想真的弄懂</h3><p>→ 引導式學習</p></div><div class="card"><h3>需要一張圖</h3><p>→ 建立圖像</p></div><div class="card"><h3>需要一首歌、一段配樂</h3><p>→ 創作音樂</p></div><div class="card"><h3>大量查資料、要附出處</h3><p>→ Deep Research</p></div><div class="card"><h3>同一批資料一直用</h3><p>→ Notebooks</p></div></div></div><div class="pno">43</div></section>
+<section class="slide t-divider" id="p44" data-label="44"><div class="inner"><div class="divider"><div class="dv-text"><div class="kicker big">07｜桌面版</div>
+<h2 class="dv-title">ChatGPT 桌面版</h2><div class="dv-sub">讓 AI 看得到你的螢幕與檔案</div></div>
+<div class="dv-ill"><div class="ill missing">插圖 sec_desktop 製作中</div></div></div></div><div class="pno">44</div></section>
+<section class="slide t-cards" id="p45" data-label="45"><div class="inner"><div class="kicker">為什麼要裝桌面版？</div><h2 class="title"><span>網頁版 vs 桌面版</span></h2><div class="cards c2"><div class="card"><h3>網頁版</h3><p>只認得你「貼進去」的東西</p><div class=note>→ 擅長回答</div></div><div class="card"><h3>桌面版</h3><p>認得你的螢幕、你的檔案、你的電腦</p><div class=note>→ 開始能代勞</div></div></div><p class="foot">同一個任務跑兩遍，你自己看差別</p></div><div class="pno">45</div></section>
+<section class="slide t-illus" id="p46" data-label="46"><div class="inner"><div class="kicker">網頁版做不到的四件事</div><h2 class="title"><span>網頁版：你把資料搬給它　桌面版：它到資料那裡做事</span></h2><div class="illus"><div class="ill missing">插圖 desktop_four 製作中</div></div><p class="foot">① 直接讀寫檔案　② 批次處理　③ skill 疊加　④ MCP</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">46</div></section>
+<section class="slide t-cards" id="p47" data-label="47"><div class="inner"><div class="kicker">① 直接讀寫檔案</div><h2 class="title"><span>它讀、它改、直接存在原處</span></h2><div class="cards c2"><div class="card"><h3>網頁版</h3><p>上傳 → 它改 → 你下載 → 你再存回去</p></div><div class="card"><h3>桌面版</h3><p>指定一個資料夾 → 它讀、它改、直接存在原處</p></div></div><p class="foot">例：「把資料夾裡每份段考 Word 檔加上評分規準表，另存新檔，不要動原檔」——交代時講清楚：另存新檔，還是覆蓋原檔</p><p class="src">資料來源｜OpenAI ChatGPT 說明：learn.chatgpt.com/docs/projects（本機專案可讀寫所附資料夾）</p></div><div class="pno">47</div></section>
+<section class="slide t-prompt" id="p48" data-label="48"><div class="inner"><div class="kicker">② 批次處理大量資料</div><h2 class="title"><span>28 份學習單 → 一張 Excel</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>這個資料夾有全班 28 份學習單，幫我整理成一張 Excel：座號、得分、常見錯誤。
+不要改動原本的檔案，Excel 另存在同一個資料夾。
+看不清楚的格子填最可能的值，字改紅色，最後一欄寫「待確認」的原因。</pre></div><p class="foot">網頁版：一次只能上傳幾份，要分好幾批、自己再合併｜桌面版：整個資料夾交給它，一份一份做完、彙整成一張表。⚠️ 學生作業＝個資：今天示範一律用假資料</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">48</div></section>
+<section class="slide t-cards" id="p49" data-label="49"><div class="inner"><div class="kicker">③ skill 疊加</div><h2 class="title"><span>skill＝把你每次都會交代的做法，存成一份說明書</span></h2><div class="cards c4"><div class="card"><h3>本校學習單格式</h3><p>＋</p></div><div class="card"><h3>三年級用字</h3><p>＋</p></div><div class="card"><h3>評分規準</h3><p>＝</p></div><div class="card"><h3>一次產出</h3><p>不用每次重打</p></div></div><p class="foot">Gemini 的 Gem 也正在改成 skill，觀念一樣；桌面版：skill 放在你電腦的資料夾，自己改、自己管、可以分享給同學年老師</p><p class="src">資料來源｜OpenAI ChatGPT 說明：learn.chatgpt.com/docs/enterprise/skills</p></div><div class="pno">49</div></section>
+<section class="slide t-cards" id="p50" data-label="50"><div class="inner"><div class="kicker">④ MCP：接上你的工具</div><h2 class="title"><span>MCP＝AI 的萬用插頭</span></h2><div class="cards c2"><div class="card"><h3>網頁版</h3><p>只能接上架好的雲端外掛</p></div><div class="card"><h3>桌面版</h3><p>還能接你電腦裡的工具（本機 MCP）</p></div></div><p class="foot">進階功能：今天知道有這扇門就好，設定請資訊組協助。只裝學校或官方認可的 MCP：它拿到的權限跟你一樣大</p><p class="src">資料來源｜OpenAI ChatGPT 說明：learn.chatgpt.com/docs/extend/mcp</p></div><div class="pno">50</div></section>
+<section class="slide t-steps" id="p51" data-label="51"><div class="inner"><div class="kicker">動手｜8 分鐘</div><h2 class="title"><span>安裝 ChatGPT 桌面版</span></h2><ol class="steps"><li><span class="num">1</span><span>到 chatgpt.com/download，選 Mac 或 Windows 安裝</span></li><li><span class="num">2</span><span>登入你的帳號</span></li><li><span class="num">3</span><span>Mac 按 Option + Space／Windows 按 Alt + Space，叫出小視窗</span></li><li><span class="num">4</span><span>上方「Chat」分頁＝聊天；「Work」分頁＝交代一整件任務</span></li></ol><p class="foot">學校電腦不能裝軟體？先用網頁版聊天；讀寫檔案、批次處理要桌面版</p><a class="link" href="https://chatgpt.com/download" target="_blank" rel="noopener">https://chatgpt.com/download</a></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">51</div></section>
+<section class="slide t-steps" id="p52" data-label="52"><div class="inner"><div class="kicker">任務①</div><h2 class="title"><span>讓它看你的螢幕</span></h2><ol class="steps"><li><span class="num">1</span><span>打開你的教案或學習單</span></li><li><span class="num">2</span><span>叫出小視窗</span></li><li><span class="num">3</span><span>按相機圖示 → 拍下這個視窗</span></li><li><span class="num">4</span><span>「幫我找錯字，改成更口語」</span></li></ol><p class="foot">網頁版要：存檔 → 上傳 → 再問</p></div><div class="pno">52</div></section>
+<section class="slide t-bullets" id="p53" data-label="53"><div class="inner"><div class="kicker">任務②</div><h2 class="title"><span>用講的備課</span></h2><ul class="bul"><li class="">按麥克風，口述 3～5 分鐘「下週這課想怎麼上」→ 整理成教案草稿</li><li class="">⚠️ 不錄真實課堂（學生聲音、姓名＝個資）</li><li class="">⚠️ 講完先看一遍再用，它會把你沒說的補上去</li></ul></div><div class="pno">53</div></section>
+<section class="slide t-illus" id="p54" data-label="54"><div class="inner"><div class="kicker">示範：把一整個資料夾交給它</div><h2 class="title"><span>研習示範資料夾（全部假資料）</span></h2><div class="illus"><div class="ill missing">插圖 folder_agent 製作中</div></div><p class="foot">它會一步一步做，每一步都可以喊停；做完自己核對一次；第一次用，先複製一份資料夾再試</p></div><div class="pno">54</div></section>
+<section class="slide t-cards" id="p55" data-label="55"><div class="inner"><div class="kicker">權限更大，界線更重要</div><h2 class="title"><span>桌面版不是更安全，是更方便</span></h2><div class="cards c3"><div class="card"><h3>分享視窗前</h3><p>關掉成績表、聯絡簿、班級名單</p></div><div class="card"><h3>授權資料夾</h3><p>只給「那一個」<br>不給桌面、不給整個雲端硬碟</p></div><div class="card"><h3>它真的會改名、搬、刪</h3><p>確認模式不要關</p></div></div><p class="foot">能丟／不能丟的規則，一條都沒變</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">55</div></section>
+<section class="slide t-table" id="p56" data-label="56"><div class="inner"><div class="kicker">收束</div><h2 class="title"><span>什麼時候開桌面版？</span></h2><table class="tbl"><thead><tr><th>情境</th><th>用哪個</th></tr></thead><tbody><tr><td>東西已經在螢幕上</td><td><b>桌面版</b></td></tr><tr><td>一整個資料夾、幾十份檔案</td><td><b>桌面版</b></td></tr><tr><td>要套自己的做法（skill）、接工具（MCP）</td><td><b>桌面版</b></td></tr><tr><td>Canvas、Gem、Notebook</td><td><b>網頁版</b>（Gemini）</td></tr><tr><td>學校電腦不能裝</td><td>先用<b>網頁版</b>聊天</td></tr></tbody></table><p class="foot">今天帶走：裝好、登入好、按得出快捷鍵的 ChatGPT 桌面版</p></div><div class="pno">56</div></section>
+<section class="slide t-closing" id="p57" data-label="57"><div class="inner"><div class="cover"><div class="ill missing">插圖 cover_bg 製作中</div><div class="cover-text">
+<h1><mark>謝謝大家！</mark></h1><div class="hand">See You in the LINE Group</div>
+<div class="meta">問題與作品都丟在 LINE 群</div>
+<div class="who"><span>周凡淇｜臺北市數位學習中心｜nora@hhups.tp.edu.tw</span></div></div></div></div><div class="pno">57</div></section>
+<section class="slide t-prompt" id="p備1" data-label="備1"><div class="inner"><div class="kicker">備用｜示範資料夾的指令（可複製）</div><h2 class="title"><span>把一整個資料夾交給它</span></h2><div class="prompt code big"><button class="copy">複製</button><pre>把這些學習單依單元分資料夾，檔名改成『單元_標題』，再產一份目錄表和教學進度草稿。
+先列出你打算怎麼分、怎麼改名，等我說「可以」再動手。</pre></div></div><div class="pno">備1</div></section>
+<section class="slide t-table" id="p備2" data-label="備2"><div class="inner"><div class="kicker">備用｜三款桌面版對照</div><h2 class="title"><span>ChatGPT、Gemini、Claude 桌面版</span></h2><table class="tbl compact"><thead><tr><th></th><th>ChatGPT（當天用）</th><th>Gemini</th><th>Claude</th></tr></thead><tbody><tr><td>叫出來</td><td>Option／Alt + Space</td><td>Option／Alt + Space</td><td>連按兩下 Option（Mac）</td></tr><tr><td>看螢幕</td><td>相機圖示拍視窗</td><td>分享視窗</td><td>截圖、分享視窗</td></tr><tr><td>代勞</td><td>Work 分頁</td><td>—</td><td>Cowork（付費）</td></tr><tr><td>語音</td><td>ChatGPT Voice</td><td>預告中</td><td>Caps Lock 口述</td></tr></tbody></table><p class="src">資料來源｜2026-10-14 查證，出處見補充資料</p></div><button class="supbtn" title="補充資料（S）">📎 補充（1 則）</button><div class="pno">備2</div></section>
+</div></div>
+<aside id="panel" aria-label="補充資料與講稿"><header>
+<button data-tab="sup" class="act">📎 補充資料</button><button data-tab="notes">🗒 講稿</button>
+<button class="x" aria-label="關閉">✕</button></header><div id="pbody"></div></aside>
+<div id="grid"></div>
+
+<div id="qrModal"><div class="box"><img src="assets/shots/line_group_qr.jpg" alt="LINE 群組 QR Code"><div class="cap">掃描加入研習 LINE 群組</div><div class="hint">點任意處或按 Q／Esc 關閉</div></div></div>
+<div id="timerPanel" aria-label="倒數計時">
+ <h5>⏱ 倒數計時</h5>
+ <div class="row"><input id="tMin" type="number" min="0" max="180" value="5"> 分 <input id="tSec" type="number" min="0" max="59" value="0"> 秒</div>
+ <div class="row"><button class="ghost" data-p="60">1 分</button><button class="ghost" data-p="180">3 分</button><button class="ghost" data-p="300">5 分</button><button class="ghost" data-p="600">10 分</button><button class="ghost" data-p="900">15 分</button></div>
+ <div class="row"><button class="go" id="tStart">開始</button><button id="tPause">暫停／繼續</button><button class="ghost" id="tAdd">+1 分</button><button class="ghost" id="tReset">結束</button></div>
+ <div class="row"><label><input type="checkbox" id="tTick" checked> 每秒滴答聲</label><label><input type="checkbox" id="tWarnSnd" checked> 最後 10 秒提示音樂</label></div>
+</div>
+<div id="timerBadge" title="點一下打開計時設定"><span id="tLeft">05:00</span><span class="bar"><i id="tBar"></i></span></div>
+<div id="edgeGlow"></div>
+<div id="timesUp">時間到！</div>
+<nav id="bar"><button id="bPrev">◀</button><button id="bQR">QR Q</button><button id="bTimer">⏱ 計時 T</button><button id="bGrid">總覽 O</button><button id="bSup">補充 S</button><button id="bNotes">講稿 N</button><button id="bFull">全螢幕 F</button><button id="bNext">▶</button></nav>
+<script>
+const SIDE=[{"n": "1", "notes": "【講稿】各位老師好，我是周凡淇，現在在臺北市數位學習中心。回到西湖很開心。\n今天分三篇：教學篇、行政篇，最後一小時是新的——桌面版 AI。", "sup": ""}, {"n": "2", "notes": "【講稿】簡單介紹自己。我在中心負責系統開發，酷AI 和各種 AI 工具每天在用、也每天在踩坑；今天分享的都是試過、真的能用的。\n（照片可自行加）", "sup": ""}, {"n": "3", "notes": "【講稿】今天所有示範都是假資料或公開資料。桌面版那一段還會再講一次：桌面版權限更大，這張表一條都不變。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">提醒</span><span class=\"ev ev-AI 建議\">AI 建議</span></div>\n<h4>為什麼段考試題不丟 AI</h4><ul><li>各校命審題要點多半規定試題不得存放於開放的網路空間；丟進 AI 服務等於上傳到雲端</li><li>練習題、學習單可以用 AI 產，但正式段考請照學校規定</li><li>要示範出題時，用公開教材或自編假題目</li></ul><p class=\"sup-src\">比照 9/30 新路國小場的界線頁改寫成通用版</p></article>"}, {"n": "4", "notes": "【講稿】今天不是工具展示，是每段都讓大家動手，帶走五個明天就能用的東西。", "sup": ""}, {"n": "5", "notes": "【講稿】請先掃 QR 加入群組，第一個活動就要在群組裡丟點子。\n（隨時要再秀 QR：按 Q 或上方「QR」按鈕）\n【行前】把西湖研習群的 QR 存成 docs/assets/shots/line_group_qr.jpg 取代占位圖。", "sup": ""}, {"n": "6", "notes": "【講稿】第一段：先發想，再讓 AI 幫我們整理。", "sup": ""}, {"n": "7", "notes": "【講稿】這是我們西湖自己的課例「轉角遇到礙」，諧音「轉角遇到愛」，處理的是學生在走廊轉角奔跑碰撞受傷。\n看完請大家在 LINE 群丟點子：這支影片可以變成哪個領域的課？數學、自然、健體、國語都可以。按 T 開 5 分鐘。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">課例</span><span class=\"ev ev-Nora 裁示\">Nora 裁示</span></div>\n<h4>「轉角遇到礙」是什麼課例</h4><ul><li>西湖國小的跨領域課例</li><li>「礙」＝阻礙、碰撞，諧音「轉角遇到愛」</li><li>解決的問題：學生在走廊轉角奔跑碰撞受傷——不是無障礙環境（常被誤解）</li></ul><div class=\"tk\"><b>上台可以這樣說</b><p>這是我們自己學校的課例，大家應該不陌生；今天把它當發想的起點。</p></div><p class=\"sup-src\">115 九大群組共同研習（日新）課例；Nora 2026-09-11 更正主題</p></article>"}, {"n": "8", "notes": "【講稿】這一步我來操作。電腦版 LINE 右上角直向三點，選「儲存聊天」，就會存成 txt。", "sup": ""}, {"n": "9", "notes": "【講稿】同一份 txt 可以丟兩個地方：Canvas 很會做漂亮的儀表板，但它會好心幫你補內容；Notebook 只根據你給的資料，每句都附出處。\n要驚豔用 Canvas，要有根據用 Notebook。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">工具</span><span class=\"ev ev-實測結果\">實測結果</span></div>\n<h4>Canvas 和 Notebook 差在哪</h4><ul><li>Canvas：會依它的理解重新組織、補上紀錄裡沒有的內容，所以提示詞要它「標出哪些是補的」</li><li>Notebook：只根據放進去的來源回答，每句附引用，點一下看到原文</li><li>NotebookLM 已更名 Gemini Notebook，網址仍是 notebooklm.google</li></ul><p class=\"sup-src\">9/30 新路國小、9 月日新場實測</p></article>"}, {"n": "10", "notes": "【講稿】我把剛剛的 txt 丟進 Gemini、開 Canvas，貼這段。重點是最後一句：要它標出哪些是我們講的、哪些是它補的。", "sup": ""}, {"n": "11", "notes": "【講稿】（切到 Canvas 成果）大家看，它把我們的點子分好領域、做成圖表。請大家找找看，哪一塊是我們沒講、它自己補的？\n【備援】網路不穩時用事先做好的成果連結或截圖。", "sup": ""}, {"n": "12", "notes": "【講稿】第二段換大家動手：把自己的一課做成互動小網頁。", "sup": ""}, {"n": "13", "notes": "【講稿】我先用一篇課文示範，大家準備自己這週要教的那一課。\n（示範課文：講者現場貼上）", "sup": ""}, {"n": "14", "notes": "【講稿】（切到成果）這是剛剛那篇課文做出來的提問卡，點一下翻面。不滿意直接用講的改，它會改網頁。\n【備援】事先做好的成果連結。", "sup": ""}, {"n": "15", "notes": "【講稿】這是 PIRLS 閱讀理解的四個層次。提問卡是一個例子，換成數學、自然、社會都可以。", "sup": ""}, {"n": "16", "notes": "【講稿】按 T 開 15 分鐘。複製這段，貼到 Gemini，記得選 Canvas。做完按分享，連結丟回 LINE 群，等一下挑幾個來看。", "sup": ""}, {"n": "17", "notes": "【講稿】舉手說一個你班上想要的小工具，我當場做。新路和日新兩場，老師最喜歡的就是這一段。沒人舉手就從這三個挑。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">提醒</span><span class=\"ev ev-實測結果\">實測結果</span></div>\n<h4>Canvas 作品的限制</h4><ul><li>Canvas 小網頁存的資料（分數、名單）放在瀏覽器裡，換瀏覽器、換電腦就不見</li><li>當課堂投影工具最穩：全班看大螢幕、輪流上台</li><li>要長期記錄學生資料，用學校的平臺（如酷AI），不要用 Canvas</li></ul><p class=\"sup-src\">新路、日新兩場經驗</p></article>"}, {"n": "18", "notes": "【講稿】休息回來，第三段：把你的教學判斷寫成 Gem。", "sup": ""}, {"n": "19", "notes": "【講稿】Gem 就是帶著說明書的 Gemini。說明書寫一次，以後每次開都照這套規則。\n先開一個設計思考 Gem 給大家看：它為什麼會這樣回？因為說明書是這樣寫的。", "sup": ""}, {"n": "20", "notes": "【講稿】這五格是今天最重要的一張。按 T 開 15 分鐘，大家照五格寫自己的 Gem，知識庫放一課課文或學習單。\n寫好之後自己扮學生，故意答錯，看它會不會降一層鷹架。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">做法</span><span class=\"ev ev-AI 建議\">AI 建議</span></div>\n<h4>Gem 說明書寫法小技巧</h4><ul><li>一次只問一個問題：寫進第 5 格「不要做」最有效</li><li>知識庫放課文、學習單、評分規準，Gem 就不會自己編內容</li><li>寫好先自己扮學生：故意答錯、故意叫它直接給答案，看它守不守規則</li><li>說明書另存一份 Google 文件（Gem 之後會轉成 skill）</li></ul><p class=\"sup-src\">新路場教學 Gem 骨架</p></article>"}, {"n": "21", "notes": "【講稿】Gem 也可以直接產文件：在 Gem 設定裡開 Canvas，請它產學習單，再按「在 Google 文件中開啟」，就能編輯、列印。", "sup": ""}, {"n": "22", "notes": "【講稿】（切到示範）按匯出、在 Google 文件中開啟，就是一份可以改的學習單。", "sup": ""}, {"n": "23", "notes": "【講稿】Google 已經公告 Gem 會轉成 skill。用學校帳號做的這學期照用，到 2027 年 6 月；用個人 Gmail 做的，11 月 17 日起就會被轉。\n要注意第 3 點：剛剛那個「Gem 開 Canvas 產學習單」，轉成 skill 後暫時不支援，要另外在對話裡開 Canvas。\n所以今天做的 Gem 照用，但請把說明書另存一份 Google 文件。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">公告</span><span class=\"ev ev-正式文件\">正式文件</span></div>\n<h4>Gem 轉 skill：Google 官方說明重點</h4><ul><li>時程依帳號：個人 Google 帳號 2026-11（11/17 起自動轉）；Workspace 商務／企業版 2027-03；Workspace 教育版 2027-06</li><li>Gem 移除時自動轉成 skill，支援的知識檔案一起搬；也可以手動轉（設定 → Skills）</li><li>還不支援的 Gem 預設工具：建立影片、創作音樂、Canvas、Deep Research、引導式學習</li><li>分享、雲端硬碟檔案、Gemini Notebook：說明頁寫「coming weeks」</li><li>用法：對話框打「/」叫出，可以疊好幾個；Gemini 也會自動套用相關 skill</li></ul><div class=\"lm\"><b>研究限制・引用提醒</b><ul><li>「skill 目前只開放 18 歲以上個人帳號」只見於單一非官方整理，未見官方原文</li><li>轉換後「Gem 開 Canvas 產學習單」要改成在對話裡另開 Canvas（依不支援清單推論）</li></ul></div><p class=\"sup-src\">Google Gemini 說明中心（2026-10-15 查證）；9to5google 2026-09-27、androidheadlines 2026-10 <a href=\"https://support.google.com/gemini?p=gems_to_skills\" target=\"_blank\" rel=\"noopener\">原文</a></p></article>"}, {"n": "24", "notes": "【講稿】行政篇第一段：讓 Gemini 串你的 Gmail、雲端硬碟、日曆。", "sup": ""}, {"n": "25", "notes": "【講稿】四個開關。最常卡的是第 2 個：活動記錄沒開，就叫不到 Workspace。\n學校帳號如果被管理員關掉，先用個人 Gmail 試。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">提醒</span><span class=\"ev ev-正式文件\">正式文件</span></div>\n<h4>學校帳號打不開？</h4><ul><li>Workspace for Education 的 Gemini、Gem、「連結的應用程式」都可由學校管理員關閉</li><li>打不開時先改用個人 Gmail 試，回學校再請資訊組長確認網域設定</li><li>活動記錄（Gemini 應用程式活動）沒開，就叫不到 @Gmail、@雲端硬碟</li></ul><p class=\"sup-src\">Google Gemini 說明中心；新路場實測</p></article>"}, {"n": "26", "notes": "【講稿】學校行事曆是公開文件，可以丟。把 PDF 丟給 Gemini，貼這段。建好之後用 @Google 日曆 問它「10 月我有哪些行程」確認。", "sup": ""}, {"n": "27", "notes": "【講稿】下面兩個任選一個試。", "sup": ""}, {"n": "28", "notes": "【講稿】下課時對手機講 3 分鐘你想怎麼上，丟給 Gemini 整理成教案格式。\n記得：不錄真實課堂，學生的聲音和名字都是個資。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">提醒</span><span class=\"ev ev-正式文件\">正式文件</span></div>\n<h4>口述備課的限制</h4><ul><li>Gemini 免費版上傳音檔上限 10 分鐘</li><li>整節課的錄音改丟 Gemini Notebook</li><li>提示詞加「我沒講到的標待補，不要自己補」，它才不會替你編活動</li></ul><p class=\"sup-src\">新路工具箱查證（2026-09-29）</p></article>"}, {"n": "29", "notes": "【講稿】拍照上傳手寫回條，請它轉成表格。示範用假回條。\n最重要的是最後一句：數字一定要人工核對，它會把 1 讀成 7。", "sup": ""}, {"n": "30", "notes": "【講稿】教學篇和行政篇收一下：要能玩用 Canvas，要有根據用 Notebook，要固定規則用 Gem。", "sup": ""}, {"n": "31", "notes": "【講稿】Gemini 輸入框的「＋」裡，還有五個好用的工具，快速認識一下。時間不夠這段可以跳過，提示詞都在 LINE 群。", "sup": ""}, {"n": "32", "notes": "【講稿】部分帳號要先點「更多工具」才看得到。\n建立圖像、創作音樂、Deep Research 限 18 歲以上，老師帳號才能用。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">提醒</span><span class=\"ev ev-正式文件\">正式文件</span></div>\n<h4>用工具箱之前先知道</h4><ul><li>建立圖像、創作音樂、Deep Research 限 18 歲以上：老師帳號用，不要給學生帳號</li><li>創作音樂、Notebooks 要先開「保留活動記錄」</li><li>學校帳號的功能由管理員控管，打不開就先改用個人 Gmail</li><li>免費版有用量上限，依運算量計算，約每 5 小時恢復（網路上「每天 20 張圖」是 2025 年的舊數字）</li><li>學生要用 Gemini，走 Classroom 裡的 Gemini，需管理員開通</li></ul><p class=\"sup-src\">新路場 Gemini 工具箱查證（2026-09-29），出處見 99結案/115 0930新路國小/Gemini工具箱</p></article>"}, {"n": "33", "notes": "【講稿】引導式學習不直接給答案，會一步一步問你。支援繁體中文。", "sup": ""}, {"n": "34", "notes": "【講稿】老師用它來看 AI 怎麼提問，可以回饋到自己的提問設計。", "sup": ""}, {"n": "35", "notes": "【講稿】課文情境圖、海報底圖都可以。每張都有隱形浮水印，可以查是不是 AI 做的。", "sup": ""}, {"n": "36", "notes": "【講稿】可以把課文重點寫成一首歌，或做一段上課前靜心的純音樂。", "sup": ""}, {"n": "37", "notes": "【講稿】（播放示範作品，分享連結丟到 LINE 群）", "sup": ""}, {"n": "38", "notes": "【講稿】Notebook 只根據你放的資料回答。放一課課文，一鍵做心智圖和 10 題測驗。", "sup": ""}, {"n": "39", "notes": "【講稿】Deep Research 會先給你研究計畫，可以改，再開始查。大概 5 到 10 分鐘。", "sup": ""}, {"n": "40", "notes": "【講稿】出處一定要點開核對，它偶爾會把出處對錯。", "sup": ""}, {"n": "41", "notes": "【講稿】Notebooks 是 Gemini 裡的筆記本，同一批資料一直用，不用每次重新上傳。", "sup": ""}, {"n": "42", "notes": "【講稿】學校課程計畫和行事曆都是公開文件，可以放。建好之後問它 10、11 月要準備什麼。", "sup": ""}, {"n": "43", "notes": "【講稿】五個工具一句話：弄懂、畫圖、做歌、查資料、同一批資料一直用。", "sup": ""}, {"n": "44", "notes": "【講稿】最後一小時，換一個工具：ChatGPT 桌面版。前面都用 Gemini 網頁版；這一段要講清楚——為什麼要裝桌面版？", "sup": ""}, {"n": "45", "notes": "【講稿】網頁版只認得你貼進去的東西；桌面版認得你的螢幕、檔案、電腦。所以網頁版擅長回答，桌面版開始能代勞。\n等一下同一個任務跑兩遍，大家自己看差別。", "sup": ""}, {"n": "46", "notes": "【講稿】這一小時我最想講的就是這四件事：直接讀寫檔案、批次處理大量資料、skill 疊加、MCP。網頁版做不太到。一個一個看。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">工具</span><span class=\"ev ev-正式文件\">正式文件</span></div>\n<h4>網頁版做不到的四件事：官方依據</h4><ul><li>讀寫檔案：本機專案（local project）可以讀寫所附資料夾的每個檔案；網頁版專案沒有直接存取電腦資料夾</li><li>批次處理：桌面版可把整個資料夾或凌亂的試算表整理成乾淨的新檔，不動原檔；「網頁版要分批」是一般經驗，上限數字未查到</li><li>skill：放在本機資料夾的 skill（含 SKILL.md 的資料夾）給桌面版／Codex 用</li><li>MCP：桌面版可以加本機的 MCP server；網頁版不讀本機設定，只能接上架好的雲端外掛</li></ul><div class=\"lm\"><b>研究限制・引用提醒</b><ul><li>ChatGPT 能不能一次疊多個 skill，官方未明寫（行前實測）</li><li>免費帳號能不能開本機專案、用 skill，未查到（行前實測）</li></ul></div><p class=\"sup-src\">learn.chatgpt.com/docs/projects、/docs/app、/docs/enterprise/skills、/docs/extend/mcp（2026-10-15 查證）</p></article>"}, {"n": "47", "notes": "【講稿】網頁版要上傳、下載、自己存回去；桌面版指定一個資料夾，它直接讀、直接改、直接存。\n所以交代的時候一定要講清楚：另存新檔，還是覆蓋原檔。", "sup": ""}, {"n": "48", "notes": "【講稿】網頁版一次只能傳幾份，要分批自己合併；桌面版把整個資料夾交給它。\n最後一行很重要：看不清楚的不要它留空、也不要它亂猜，而是填最可能的值、標紅、寫原因——我們拿西湖教學組的代課清單試過，這樣最好核對。\n學生作業是個資，今天一律假資料。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">案例</span><span class=\"ev ev-實測結果\">實測結果</span></div>\n<h4>實測：用桌面版整理代課清單</h4><ul><li>材料：教學組的代課資料，先去個資（身分證換成假號、審查表塗黑個資）</li><li>交給 AI：請假的 LINE 訊息、差勤截圖、資歷審查表、課表，要它整理成當月代課清單</li><li>結果：正解的請假與代課組合全部對上</li><li>原本寫「不確定的留空」，它就留了很多空格；改成「填最可能值、字改紅、寫原因」後，最好核對</li></ul><div class=\"tk\"><b>上台可以這樣說</b><p>我們拿教學組真實的流程試過，最重要的一句提示詞是：不確定的填最可能的值、標紅、寫原因。</p></div><p class=\"sup-src\">2026-10-15 以 Codex CLI（與 ChatGPT 桌面版同帳號、同模型）試跑</p></article>"}, {"n": "49", "notes": "【講稿】skill 就是把你每次都要交代的做法存成說明書。三個疊起來用：學校格式、三年級用字、評分規準，一次產出。\n跟剛剛講的 Gem 改 skill 是同一個觀念。\n【行前實測】ChatGPT 能不能一次套多個 skill，官方沒有明寫；實測不行就改講「一個 skill＝一份做法」。", "sup": ""}, {"n": "50", "notes": "【講稿】MCP 是 AI 的萬用插頭，讓 ChatGPT 接上其他軟體和系統。今天只要知道有這扇門；要設定請資訊組協助，而且只裝學校或官方認可的，因為它的權限跟你一樣大。", "sup": ""}, {"n": "51", "notes": "【講稿】按 T 開 8 分鐘，大家裝起來。裝好先按快捷鍵叫出小視窗。\n【行前實測】免費帳號能不能開本機專案、用 skill，研習前確認。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">提醒</span><span class=\"ev ev-正式文件\">正式文件</span></div>\n<h4>安裝前後要知道</h4><ul><li>2026-07 新版桌面 app 整合 ChatGPT 與 Codex，舊版改名 ChatGPT Classic</li><li>Mac Option + Space／Windows Alt + Space 叫出浮動小視窗</li><li>上方 Chat／Work 分頁：Work 是交代一整件任務的代理模式</li><li>OpenAI 總裁 7 月自承新版介面「有點亂」：先帶大家找到 Chat／Work 分頁</li></ul><div class=\"lm\"><b>研究限制・引用提醒</b><ul><li>免費帳號能用多少 Work 任務、能否開本機專案，研習前實測</li></ul></div><p class=\"sup-src\">help.openai.com/en/articles/9703738；9to5mac 2026-07-29；theneuron.ai（2026-10-14 查證） <a href=\"https://chatgpt.com/download\" target=\"_blank\" rel=\"noopener\">原文</a></p></article>"}, {"n": "52", "notes": "【講稿】同一個任務跑兩遍：網頁版要存檔、上傳、再問；桌面版快捷鍵、拍視窗、直接問。大家自己感受差別。", "sup": ""}, {"n": "53", "notes": "【講稿】時間夠再做這個。按麥克風講你下週想怎麼上。\n時間不夠這頁可以跳過。", "sup": ""}, {"n": "54", "notes": "【講稿】我示範把一整個資料夾交給它：依單元分資料夾、改檔名、產目錄表。下一頁是我給它的指令。\n大家看它一步一步做、每一步都會問。", "sup": ""}, {"n": "55", "notes": "【講稿】桌面版不是更安全，是更方便。資料一樣送到雲端，而且權限更大。這三條請一定記得。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">提醒</span><span class=\"ev ev-AI 建議\">AI 建議</span></div>\n<h4>桌面版權限三條，為什麼</h4><ul><li>資料一樣送到雲端：桌面版只是介面，不是本機 AI</li><li>看得到螢幕：分享視窗前，畫面上的成績表、聯絡簿也會被拍進去</li><li>讀得到資料夾：授權桌面或整個雲端硬碟＝把裡面所有學生資料都給它</li><li>它會改名、搬、刪：第一次用先複製一份資料夾，確認模式不要關</li></ul><p class=\"sup-src\">課程規劃 v1 §4.5</p></article>"}, {"n": "56", "notes": "【講稿】最後一張判準卡。問問題、改文字，兩個都行，順手的那個。東西在螢幕上、一整個資料夾、要套 skill 或接工具，開桌面版。Canvas、Gem、Notebook 用 Gemini 網頁版。", "sup": ""}, {"n": "57", "notes": "【講稿】謝謝大家。今天的作品、問題都丟 LINE 群，之後有新的工具我也會丟上來。", "sup": ""}, {"n": "備1", "notes": "【講稿】第二句是重點：先列計畫、等我說可以再動手。第一次用桌面版整理檔案，一定要這樣交代。", "sup": ""}, {"n": "備2", "notes": "【講稿】有老師問其他家的桌面版，用這張。", "sup": "<article class=\"sup\"><div class=\"sup-k\"><span class=\"kind\">工具</span><span class=\"ev ev-正式文件\">正式文件</span></div>\n<h4>三款桌面版查證出處</h4><ul><li>Gemini Mac 版 2026-04-15（macOS 15 以上）、Windows 版 2026-09-10</li><li>Claude Desktop：連按兩下 Option 快速輸入（Mac 限定）、Caps Lock 口述；Cowork 需付費方案（Pro 2026-02-25 起）</li><li>ChatGPT：2026-07 新版整合 Codex、Work agent、computer use；2026-07-23 起 ChatGPT Voice 進桌面版</li></ul><p class=\"sup-src\">techcrunch 2026-04-15、9to5google 2026-09-10、support.claude.com、help.openai.com、techcrunch 2026-07-24（2026-10-14 查證）</p></article>"}];
+const slides=[...document.querySelectorAll('.slide')];
+let cur=0, tab='sup';
+const panel=document.getElementById('panel'), pbody=document.getElementById('pbody');
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);document.getElementById('deck').style.transform=`scale(${s})`;}
+function show(i){cur=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
+  history.replaceState(null,'','#p'+slides[cur].dataset.label);document.getElementById('prog').style.width=((cur+1)/slides.length*100)+'%';renderPanel();}
+function renderPanel(){const d=SIDE[cur];setTimeout(bindCopy,0);
+  document.querySelectorAll('#panel header [data-tab]').forEach(b=>b.classList.toggle('act',b.dataset.tab===tab));
+  if(tab==='sup') pbody.innerHTML=d.sup||'<p class="empty">這頁沒有補充資料。</p>';
+  else if(d.notes){pbody.innerHTML='<div class="notes"></div>';pbody.firstChild.textContent=d.notes;}
+  else pbody.innerHTML='<p class="empty">這頁沒有講稿。</p>';}
+document.querySelectorAll('.slide .copy').forEach(b=>b.onclick=ev=>{ev.stopPropagation();navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='已複製';setTimeout(()=>b.textContent='複製',1500);});
+function bindCopy(){pbody.querySelectorAll('.copy').forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='已複製';setTimeout(()=>b.textContent='複製',1500);});}
+function openPanel(t){if(panel.classList.contains('open')&&tab===t){panel.classList.remove('open');return;}tab=t;panel.classList.add('open');renderPanel();}
+document.querySelectorAll('#panel header [data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;renderPanel();});
+panel.querySelector('.x').onclick=()=>panel.classList.remove('open');
+document.querySelectorAll('.supbtn').forEach(b=>b.onclick=()=>{tab='sup';panel.classList.add('open');renderPanel();});
+const grid=document.getElementById('grid');
+grid.innerHTML=slides.map((s,k)=>{const t=(s.querySelector('h1,h2,.situation')||s).textContent.trim().slice(0,40);
+  return `<button data-k="${k}" class="${SIDE[k].sup?'has':''}"><b>${slides[k].dataset.label}</b>${t}</button>`}).join('');
+grid.onclick=e=>{const b=e.target.closest('button');if(b){show(+b.dataset.k);grid.classList.remove('open');}};
+function full(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+bPrev.onclick=()=>show(cur-1);bNext.onclick=()=>show(cur+1);bGrid.onclick=()=>grid.classList.toggle('open');
+bSup.onclick=()=>openPanel('sup');bNotes.onclick=()=>openPanel('notes');bFull.onclick=full;
+addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('input,textarea'))return;
+  const k=e.key;if(['ArrowRight','PageDown',' ','Enter'].includes(k)){e.preventDefault();show(cur+1);}
+  else if(['ArrowLeft','PageUp','Backspace'].includes(k)){e.preventDefault();show(cur-1);}
+  else if(k==='Home')show(0);else if(k==='End')show(slides.length-1);
+  else if(k==='o'||k==='O')grid.classList.toggle('open');else if(k==='s'||k==='S')openPanel('sup');
+  else if(k==='n'||k==='N')openPanel('notes');else if(k==='q'||k==='Q')toggleQR();else if(k==='t'||k==='T')tp.classList.toggle('open');else if(k==='f'||k==='F')full();
+  else if(k==='Escape'){grid.classList.remove('open');panel.classList.remove('open');qrModal.classList.remove('open');tp.classList.remove('open');up.classList.remove('open');}});
+let tx=null;addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{if(tx===null||panel.contains(e.target))return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));tx=null;});
+
+// ===== QR 彈窗 =====
+const qrModal=document.getElementById('qrModal');
+function toggleQR(){qrModal.classList.toggle('open');}
+qrModal.onclick=()=>qrModal.classList.remove('open');
+bQR.onclick=toggleQR;
+// ===== 倒數計時（以結束時刻計算，換頁、切換分頁都不影響） =====
+const tp=document.getElementById('timerPanel'), badge=document.getElementById('timerBadge'), tLeft=document.getElementById('tLeft'), tBar=document.getElementById('tBar'), glow=document.getElementById('edgeGlow'), up=document.getElementById('timesUp');
+let tEnd=0, tTotal=0, tRemainPaused=null, tTimer=null, lastSec=-1, actx=null;
+function ac(){if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();return actx;}
+function beep(f,dur,vol,type='sine',when=0){const c=ac(),o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0.0001,c.currentTime+when);g.gain.exponentialRampToValueAtTime(vol,c.currentTime+when+0.01);g.gain.exponentialRampToValueAtTime(0.0001,c.currentTime+when+dur);o.connect(g).connect(c.destination);o.start(c.currentTime+when);o.stop(c.currentTime+when+dur+0.05);}
+function tick(sec){if(!tTick.checked)return; if(sec<=10&&tWarnSnd.checked){beep(sec%2?880:1175,0.12,0.25,'triangle');}else{beep(sec%2?1000:800,0.04,0.08,'square');}}
+function warnMelody(){if(!tWarnSnd.checked)return;[659,784,880].forEach((f,i)=>beep(f,0.18,0.22,'triangle',i*0.16));}
+function finale(){[523,659,784,1047,784,1047].forEach((f,i)=>beep(f,0.28,0.3,'triangle',i*0.22));}
+const fmt=s=>{s=Math.max(0,Math.ceil(s));const m=Math.floor(s/60),x=s%60;return String(m).padStart(2,'0')+':'+String(x).padStart(2,'0');};
+function remain(){return tRemainPaused!==null?tRemainPaused:(tEnd-Date.now())/1000;}
+function paint(){const r=remain(),sec=Math.ceil(r);tLeft.textContent=fmt(r);tBar.style.width=(tTotal?Math.max(0,r/tTotal*100):0)+'%';
+  badge.classList.toggle('warn',sec<=60&&sec>10);badge.classList.toggle('danger',sec<=10&&sec>0);glow.classList.toggle('on',sec<=10&&sec>0&&tRemainPaused===null);
+  badge.classList.toggle('paused',tRemainPaused!==null);
+  if(tRemainPaused===null&&sec!==lastSec){if(lastSec>0){ if(sec===10)warnMelody(); if(sec>0)tick(sec);} lastSec=sec;}
+  if(tRemainPaused===null&&r<=0){stopTimer(false);up.classList.add('open');finale();}}
+function startTimer(total){ac();tTotal=total;tEnd=Date.now()+total*1000;tRemainPaused=null;lastSec=Math.ceil(total);badge.classList.add('show');clearInterval(tTimer);tTimer=setInterval(paint,100);paint();tp.classList.remove('open');}
+function stopTimer(hide=true){clearInterval(tTimer);tTimer=null;glow.classList.remove('on');badge.classList.remove('warn','danger');if(hide){badge.classList.remove('show');tRemainPaused=null;}else{tLeft.textContent='00:00';tBar.style.width='0%';}}
+tStart.onclick=()=>{const t=(+tMin.value||0)*60+(+tSec.value||0);if(t>0)startTimer(t);};
+tp.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{const t=+b.dataset.p;tMin.value=Math.floor(t/60);tSec.value=t%60;startTimer(t);});
+tPause.onclick=()=>{if(!tTimer&&tRemainPaused===null)return;if(tRemainPaused===null){tRemainPaused=remain();}else{tEnd=Date.now()+tRemainPaused*1000;tRemainPaused=null;lastSec=Math.ceil(remain());}paint();};
+tAdd.onclick=()=>{if(tRemainPaused!==null){tRemainPaused+=60;}else if(tTimer){tEnd+=60000;}else return;tTotal+=60;lastSec=Math.ceil(remain());paint();};
+tReset.onclick=()=>{stopTimer(true);tp.classList.remove('open');};
+badge.onclick=()=>tp.classList.toggle('open');
+up.onclick=()=>{up.classList.remove('open');badge.classList.remove('show');};
+bTimer.onclick=()=>tp.classList.toggle('open');
+tp.addEventListener('keydown',e=>e.stopPropagation());
+addEventListener('resize',fit);fit();
+const m=decodeURIComponent(location.hash).match(/^#p(.+)$/);const k0=m?slides.findIndex(s=>s.dataset.label===m[1]):0;show(k0<0?0:k0);
+</script>
+</body>
+</html>
