@@ -1,79 +1,208 @@
 {
  "3": [
-  {"title": "為什麼段考試題不丟 AI", "kind": "提醒", "evidence": "AI 建議",
-   "points": ["各校命審題要點多半規定試題不得存放於開放的網路空間；丟進 AI 服務等於上傳到雲端", "練習題、學習單可以用 AI 產，但正式段考請照學校規定", "要示範出題時，用公開教材或自編假題目"],
-   "source": "比照 9/30 新路國小場的界線頁改寫成通用版"}
+  {
+   "title": "為什麼段考試題不丟 AI",
+   "kind": "提醒",
+   "evidence": "AI 建議",
+   "points": [
+    "各校命審題要點多半規定試題不得存放於開放的網路空間；丟進 AI 服務等於上傳到雲端",
+    "練習題、學習單可以用 AI 產，但正式段考請照學校規定",
+    "要示範出題時，用公開教材或自編假題目"
+   ],
+   "source": "比照 9/30 新路國小場的界線頁改寫成通用版"
+  }
  ],
- "7": [
-  {"title": "「轉角遇到礙」是什麼課例", "kind": "課例", "evidence": "Nora 裁示",
-   "points": ["西湖國小的跨領域課例", "「礙」＝阻礙、碰撞，諧音「轉角遇到愛」", "解決的問題：學生在走廊轉角奔跑碰撞受傷——不是無障礙環境（常被誤解）"],
+ "6": [
+  {
+   "title": "「轉角遇到礙」是什麼課例",
+   "kind": "課例",
+   "evidence": "Nora 裁示",
+   "points": [
+    "西湖國小的跨領域課例",
+    "「礙」＝阻礙、碰撞，諧音「轉角遇到愛」",
+    "解決的問題：學生在走廊轉角奔跑碰撞受傷——不是無障礙環境（常被誤解）"
+   ],
    "talk": "這是我們自己學校的課例，大家應該不陌生；今天把它當發想的起點。",
-   "source": "115 九大群組共同研習（日新）課例；Nora 2026-09-11 更正主題"}
+   "source": "115 九大群組共同研習（日新）課例；Nora 2026-09-11 更正主題"
+  }
  ],
- "9": [
-  {"title": "Canvas 和 Notebook 差在哪", "kind": "工具", "evidence": "實測結果",
-   "points": ["Canvas：會依它的理解重新組織、補上紀錄裡沒有的內容，所以提示詞要它「標出哪些是補的」", "Notebook：只根據放進去的來源回答，每句附引用，點一下看到原文", "NotebookLM 已更名 Gemini Notebook，網址仍是 notebooklm.google"],
-   "source": "9/30 新路國小、9 月日新場實測"}
+ "8": [
+  {
+   "title": "Canvas 和 Notebook 差在哪",
+   "kind": "工具",
+   "evidence": "實測結果",
+   "points": [
+    "Canvas：會依它的理解重新組織、補上紀錄裡沒有的內容，所以提示詞要它「標出哪些是補的」",
+    "Notebook：只根據放進去的來源回答，每句附引用，點一下看到原文",
+    "NotebookLM 已更名 Gemini Notebook，網址仍是 notebooklm.google"
+   ],
+   "source": "9/30 新路國小、9 月日新場實測"
+  }
  ],
- "17": [
-  {"title": "Canvas 作品的限制", "kind": "提醒", "evidence": "實測結果",
-   "points": ["Canvas 小網頁存的資料（分數、名單）放在瀏覽器裡，換瀏覽器、換電腦就不見", "當課堂投影工具最穩：全班看大螢幕、輪流上台", "要長期記錄學生資料，用學校的平臺（如酷AI），不要用 Canvas"],
-   "source": "新路、日新兩場經驗"}
+ "16": [
+  {
+   "title": "Canvas 作品的限制",
+   "kind": "提醒",
+   "evidence": "實測結果",
+   "points": [
+    "Canvas 小網頁存的資料（分數、名單）放在瀏覽器裡，換瀏覽器、換電腦就不見",
+    "當課堂投影工具最穩：全班看大螢幕、輪流上台",
+    "要長期記錄學生資料，用學校的平臺（如酷AI），不要用 Canvas"
+   ],
+   "source": "新路、日新兩場經驗"
+  }
  ],
- "20": [
-  {"title": "Gem 說明書寫法小技巧", "kind": "做法", "evidence": "AI 建議",
-   "points": ["一次只問一個問題：寫進第 5 格「不要做」最有效", "知識庫放課文、學習單、評分規準，Gem 就不會自己編內容", "寫好先自己扮學生：故意答錯、故意叫它直接給答案，看它守不守規則", "說明書另存一份 Google 文件（Gem 之後會轉成 skill）"],
-   "source": "新路場教學 Gem 骨架"}
+ "19": [
+  {
+   "title": "Gem 說明書寫法小技巧",
+   "kind": "做法",
+   "evidence": "AI 建議",
+   "points": [
+    "一次只問一個問題：寫進第 5 格「不要做」最有效",
+    "知識庫放課文、學習單、評分規準，Gem 就不會自己編內容",
+    "寫好先自己扮學生：故意答錯、故意叫它直接給答案，看它守不守規則",
+    "說明書另存一份 Google 文件（Gem 之後會轉成 skill）"
+   ],
+   "source": "新路場教學 Gem 骨架"
+  }
  ],
- "23": [
-  {"title": "Gem 轉 skill：Google 官方說明重點", "kind": "公告", "evidence": "正式文件",
-   "points": ["時程依帳號：個人 Google 帳號 2026-11（11/17 起自動轉）；Workspace 商務／企業版 2027-03；Workspace 教育版 2027-06", "Gem 移除時自動轉成 skill，支援的知識檔案一起搬；也可以手動轉（設定 → Skills）", "還不支援的 Gem 預設工具：建立影片、創作音樂、Canvas、Deep Research、引導式學習", "分享、雲端硬碟檔案、Gemini Notebook：說明頁寫「coming weeks」", "用法：對話框打「/」叫出，可以疊好幾個；Gemini 也會自動套用相關 skill"],
-   "limits": ["「skill 目前只開放 18 歲以上個人帳號」只見於單一非官方整理，未見官方原文", "轉換後「Gem 開 Canvas 產學習單」要改成在對話裡另開 Canvas（依不支援清單推論）"],
+ "22": [
+  {
+   "title": "Gem 轉 skill：Google 官方說明重點",
+   "kind": "公告",
+   "evidence": "正式文件",
+   "points": [
+    "時程依帳號：個人 Google 帳號 2026-11（11/17 起自動轉）；Workspace 商務／企業版 2027-03；Workspace 教育版 2027-06",
+    "Gem 移除時自動轉成 skill，支援的知識檔案一起搬；也可以手動轉（設定 → Skills）",
+    "還不支援的 Gem 預設工具：建立影片、創作音樂、Canvas、Deep Research、引導式學習",
+    "分享、雲端硬碟檔案、Gemini Notebook：說明頁寫「coming weeks」",
+    "用法：對話框打「/」叫出，可以疊好幾個；Gemini 也會自動套用相關 skill"
+   ],
+   "limits": [
+    "「skill 目前只開放 18 歲以上個人帳號」只見於單一非官方整理，未見官方原文",
+    "轉換後「Gem 開 Canvas 產學習單」要改成在對話裡另開 Canvas（依不支援清單推論）"
+   ],
    "url": "https://support.google.com/gemini?p=gems_to_skills",
-   "source": "Google Gemini 說明中心（2026-10-15 查證）；9to5google 2026-09-27、androidheadlines 2026-10"}
+   "source": "Google Gemini 說明中心（2026-10-15 查證）；9to5google 2026-09-27、androidheadlines 2026-10"
+  }
  ],
- "25": [
-  {"title": "學校帳號打不開？", "kind": "提醒", "evidence": "正式文件",
-   "points": ["Workspace for Education 的 Gemini、Gem、「連結的應用程式」都可由學校管理員關閉", "打不開時先改用個人 Gmail 試，回學校再請資訊組長確認網域設定", "活動記錄（Gemini 應用程式活動）沒開，就叫不到 @Gmail、@雲端硬碟"],
-   "source": "Google Gemini 說明中心；新路場實測"}
+ "24": [
+  {
+   "title": "學校帳號打不開？",
+   "kind": "提醒",
+   "evidence": "正式文件",
+   "points": [
+    "Workspace for Education 的 Gemini、Gem、「連結的應用程式」都可由學校管理員關閉",
+    "打不開時先改用個人 Gmail 試，回學校再請資訊組長確認網域設定",
+    "活動記錄（Gemini 應用程式活動）沒開，就叫不到 @Gmail、@雲端硬碟"
+   ],
+   "source": "Google Gemini 說明中心；新路場實測"
+  }
  ],
- "28": [
-  {"title": "口述備課的限制", "kind": "提醒", "evidence": "正式文件",
-   "points": ["Gemini 免費版上傳音檔上限 10 分鐘", "整節課的錄音改丟 Gemini Notebook", "提示詞加「我沒講到的標待補，不要自己補」，它才不會替你編活動"],
-   "source": "新路工具箱查證（2026-09-29）"}
+ "27": [
+  {
+   "title": "口述備課的限制",
+   "kind": "提醒",
+   "evidence": "正式文件",
+   "points": [
+    "Gemini 免費版上傳音檔上限 10 分鐘",
+    "整節課的錄音改丟 Gemini Notebook",
+    "提示詞加「我沒講到的標待補，不要自己補」，它才不會替你編活動"
+   ],
+   "source": "新路工具箱查證（2026-09-29）"
+  }
  ],
- "32": [
-  {"title": "用工具箱之前先知道", "kind": "提醒", "evidence": "正式文件",
-   "points": ["建立圖像、創作音樂、Deep Research 限 18 歲以上：老師帳號用，不要給學生帳號", "創作音樂、Notebooks 要先開「保留活動記錄」", "學校帳號的功能由管理員控管，打不開就先改用個人 Gmail", "免費版有用量上限，依運算量計算，約每 5 小時恢復（網路上「每天 20 張圖」是 2025 年的舊數字）", "學生要用 Gemini，走 Classroom 裡的 Gemini，需管理員開通"],
-   "source": "新路場 Gemini 工具箱查證（2026-09-29），出處見 99結案/115 0930新路國小/Gemini工具箱"}
+ "31": [
+  {
+   "title": "用工具箱之前先知道",
+   "kind": "提醒",
+   "evidence": "正式文件",
+   "points": [
+    "建立圖像、創作音樂、Deep Research 限 18 歲以上：老師帳號用，不要給學生帳號",
+    "創作音樂、Notebooks 要先開「保留活動記錄」",
+    "學校帳號的功能由管理員控管，打不開就先改用個人 Gmail",
+    "免費版有用量上限，依運算量計算，約每 5 小時恢復（網路上「每天 20 張圖」是 2025 年的舊數字）",
+    "學生要用 Gemini，走 Classroom 裡的 Gemini，需管理員開通"
+   ],
+   "source": "新路場 Gemini 工具箱查證（2026-09-29），出處見 99結案/115 0930新路國小/Gemini工具箱"
+  }
  ],
- "46": [
-  {"title": "網頁版做不到的四件事：官方依據", "kind": "工具", "evidence": "正式文件",
-   "points": ["讀寫檔案：本機專案（local project）可以讀寫所附資料夾的每個檔案；網頁版專案沒有直接存取電腦資料夾", "批次處理：桌面版可把整個資料夾或凌亂的試算表整理成乾淨的新檔，不動原檔；「網頁版要分批」是一般經驗，上限數字未查到", "skill：放在本機資料夾的 skill（含 SKILL.md 的資料夾）給桌面版／Codex 用", "MCP：桌面版可以加本機的 MCP server；網頁版不讀本機設定，只能接上架好的雲端外掛"],
-   "limits": ["ChatGPT 能不能一次疊多個 skill，官方未明寫（行前實測）", "免費帳號能不能開本機專案、用 skill，未查到（行前實測）"],
-   "source": "learn.chatgpt.com/docs/projects、/docs/app、/docs/enterprise/skills、/docs/extend/mcp（2026-10-15 查證）"}
+ "45": [
+  {
+   "title": "網頁版做不到的四件事：官方依據",
+   "kind": "工具",
+   "evidence": "正式文件",
+   "points": [
+    "讀寫檔案：本機專案（local project）可以讀寫所附資料夾的每個檔案；網頁版專案沒有直接存取電腦資料夾",
+    "批次處理：桌面版可把整個資料夾或凌亂的試算表整理成乾淨的新檔，不動原檔；「網頁版要分批」是一般經驗，上限數字未查到",
+    "skill：放在本機資料夾的 skill（含 SKILL.md 的資料夾）給桌面版／Codex 用",
+    "MCP：桌面版可以加本機的 MCP server；網頁版不讀本機設定，只能接上架好的雲端外掛"
+   ],
+   "limits": [
+    "ChatGPT 能不能一次疊多個 skill，官方未明寫（行前實測）",
+    "免費帳號能不能開本機專案、用 skill，未查到（行前實測）"
+   ],
+   "source": "learn.chatgpt.com/docs/projects、/docs/app、/docs/enterprise/skills、/docs/extend/mcp（2026-10-15 查證）"
+  }
  ],
- "48": [
-  {"title": "實測：用桌面版整理代課清單", "kind": "案例", "evidence": "實測結果",
-   "points": ["材料：教學組的代課資料，先去個資（身分證換成假號、審查表塗黑個資）", "交給 AI：請假的 LINE 訊息、差勤截圖、資歷審查表、課表，要它整理成當月代課清單", "結果：正解的請假與代課組合全部對上", "原本寫「不確定的留空」，它就留了很多空格；改成「填最可能值、字改紅、寫原因」後，最好核對"],
+ "47": [
+  {
+   "title": "實測：用桌面版整理代課清單",
+   "kind": "案例",
+   "evidence": "實測結果",
+   "points": [
+    "材料：教學組的代課資料，先去個資（身分證換成假號、審查表塗黑個資）",
+    "交給 AI：請假的 LINE 訊息、差勤截圖、資歷審查表、課表，要它整理成當月代課清單",
+    "結果：正解的請假與代課組合全部對上",
+    "原本寫「不確定的留空」，它就留了很多空格；改成「填最可能值、字改紅、寫原因」後，最好核對"
+   ],
    "talk": "我們拿教學組真實的流程試過，最重要的一句提示詞是：不確定的填最可能的值、標紅、寫原因。",
-   "source": "2026-10-15 以 Codex CLI（與 ChatGPT 桌面版同帳號、同模型）試跑"}
+   "source": "2026-10-15 以 Codex CLI（與 ChatGPT 桌面版同帳號、同模型）試跑"
+  }
  ],
- "51": [
-  {"title": "安裝前後要知道", "kind": "提醒", "evidence": "正式文件",
-   "points": ["2026-07 新版桌面 app 整合 ChatGPT 與 Codex，舊版改名 ChatGPT Classic", "Mac Option + Space／Windows Alt + Space 叫出浮動小視窗", "上方 Chat／Work 分頁：Work 是交代一整件任務的代理模式", "OpenAI 總裁 7 月自承新版介面「有點亂」：先帶大家找到 Chat／Work 分頁"],
-   "limits": ["免費帳號能用多少 Work 任務、能否開本機專案，研習前實測"],
+ "50": [
+  {
+   "title": "安裝前後要知道",
+   "kind": "提醒",
+   "evidence": "正式文件",
+   "points": [
+    "2026-07 新版桌面 app 整合 ChatGPT 與 Codex，舊版改名 ChatGPT Classic",
+    "Mac Option + Space／Windows Alt + Space 叫出浮動小視窗",
+    "上方 Chat／Work 分頁：Work 是交代一整件任務的代理模式",
+    "OpenAI 總裁 7 月自承新版介面「有點亂」：先帶大家找到 Chat／Work 分頁"
+   ],
+   "limits": [
+    "免費帳號能用多少 Work 任務、能否開本機專案，研習前實測"
+   ],
    "url": "https://chatgpt.com/download",
-   "source": "help.openai.com/en/articles/9703738；9to5mac 2026-07-29；theneuron.ai（2026-10-14 查證）"}
+   "source": "help.openai.com/en/articles/9703738；9to5mac 2026-07-29；theneuron.ai（2026-10-14 查證）"
+  }
  ],
- "55": [
-  {"title": "桌面版權限三條，為什麼", "kind": "提醒", "evidence": "AI 建議",
-   "points": ["資料一樣送到雲端：桌面版只是介面，不是本機 AI", "看得到螢幕：分享視窗前，畫面上的成績表、聯絡簿也會被拍進去", "讀得到資料夾：授權桌面或整個雲端硬碟＝把裡面所有學生資料都給它", "它會改名、搬、刪：第一次用先複製一份資料夾，確認模式不要關"],
-   "source": "課程規劃 v1 §4.5"}
+ "54": [
+  {
+   "title": "桌面版權限三條，為什麼",
+   "kind": "提醒",
+   "evidence": "AI 建議",
+   "points": [
+    "資料一樣送到雲端：桌面版只是介面，不是本機 AI",
+    "看得到螢幕：分享視窗前，畫面上的成績表、聯絡簿也會被拍進去",
+    "讀得到資料夾：授權桌面或整個雲端硬碟＝把裡面所有學生資料都給它",
+    "它會改名、搬、刪：第一次用先複製一份資料夾，確認模式不要關"
+   ],
+   "source": "課程規劃 v1 §4.5"
+  }
  ],
  "備2": [
-  {"title": "三款桌面版查證出處", "kind": "工具", "evidence": "正式文件",
-   "points": ["Gemini Mac 版 2026-04-15（macOS 15 以上）、Windows 版 2026-09-10", "Claude Desktop：連按兩下 Option 快速輸入（Mac 限定）、Caps Lock 口述；Cowork 需付費方案（Pro 2026-02-25 起）", "ChatGPT：2026-07 新版整合 Codex、Work agent、computer use；2026-07-23 起 ChatGPT Voice 進桌面版"],
-   "source": "techcrunch 2026-04-15、9to5google 2026-09-10、support.claude.com、help.openai.com、techcrunch 2026-07-24（2026-10-14 查證）"}
+  {
+   "title": "三款桌面版查證出處",
+   "kind": "工具",
+   "evidence": "正式文件",
+   "points": [
+    "Gemini Mac 版 2026-04-15（macOS 15 以上）、Windows 版 2026-09-10",
+    "Claude Desktop：連按兩下 Option 快速輸入（Mac 限定）、Caps Lock 口述；Cowork 需付費方案（Pro 2026-02-25 起）",
+    "ChatGPT：2026-07 新版整合 Codex、Work agent、computer use；2026-07-23 起 ChatGPT Voice 進桌面版"
+   ],
+   "source": "techcrunch 2026-04-15、9to5google 2026-09-10、support.claude.com、help.openai.com、techcrunch 2026-07-24（2026-10-14 查證）"
+  }
  ]
 }
